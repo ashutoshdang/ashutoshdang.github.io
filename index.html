@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashutosh Dang - Enterprise IDE</title>
+    <title>Ashutosh_Dang.java - IntelliJ IDEA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -21,7 +21,8 @@
                         ideKeyword: "#cf8e6d",
                         ideString: "#6aab73",
                         ideComment: "#7a7e85",
-                        ideAnnotation: "#b3ae60"
+                        ideAnnotation: "#b3ae60",
+                        ideType: "#467cda"
                     }
                 }
             }
@@ -32,57 +33,59 @@
         .custom-scroll::-webkit-scrollbar { width: 8px; }
         .custom-scroll::-webkit-scrollbar-track { background: #1e1f22; }
         .custom-scroll::-webkit-scrollbar-thumb { background: #3c3f41; border-radius: 4px; }
-        .line-number { color: #4b5059; text-align: right; padding-right: 1.5rem; min-width: 3.5rem; user-select: none; }
+        .line-number { color: #4b5059; text-align: right; padding-right: 1.5rem; min-width: 3rem; user-select: none; }
         .active-tab { background-color: #1e1f22; border-bottom: 2px solid #3574f0; color: #fff; }
-        .menu-item:hover .submenu { display: block; }
-        [contenteditable]:focus { outline: none; }
+        .file-item { cursor: pointer; transition: all 0.2s; }
+        .file-item:hover { background: rgba(255,255,255,0.05); }
+        .code-container { white-space: pre; }
     </style>
 </head>
 <body class="font-mono text-[13px] h-screen flex flex-col">
 
-    <header class="h-9 bg-ideSidebar border-b border-ideHeader flex items-center px-3 justify-between relative z-50">
+    <header class="h-9 bg-[#2b2d30] border-b border-[#3c3f41] flex items-center px-3 justify-between">
         <div class="flex items-center gap-4 text-xs">
             <img src="https://resources.jetbrains.com/storage/products/intellij-idea/img/meta/intellij-idea_logo_300x300.png" class="w-4 h-4" alt="IDE Logo">
-            <div class="flex gap-2">
-                <div class="relative menu-item group">
-                    <span class="px-2 py-1 hover:bg-ideHeader rounded cursor-pointer">File</span>
-                    <div class="submenu hidden group-hover:block absolute left-0 top-full bg-ideSidebar border border-ideHeader w-48 shadow-xl py-1">
-                        <div onclick="createNewFile()" class="px-4 py-1.5 hover:bg-ideAccent text-white cursor-pointer flex justify-between">
-                            <span>New File</span><span class="text-ideComment text-[10px]">Ctrl+N</span>
-                        </div>
-                        <div class="h-[1px] bg-ideHeader my-1"></div>
-                        <div class="px-4 py-1.5 hover:bg-ideAccent text-white cursor-pointer">Save All</div>
-                    </div>
-                </div>
-                <span class="px-2 py-1 hover:bg-ideHeader rounded cursor-pointer">Edit</span>
-                <span class="px-2 py-1 hover:bg-ideHeader rounded cursor-pointer">Build</span>
-                <span class="px-2 py-1 hover:bg-ideHeader rounded cursor-pointer">Run</span>
+            <div class="flex gap-3">
+                <span>File</span><span>Edit</span><span>View</span><span>Navigate</span><span>Code</span><span>Analyze</span><span>Refactor</span><span>Build</span><span>Run</span>
             </div>
         </div>
         <div class="flex items-center gap-2 text-[10px] text-ideComment">
-            <span>Enterprise_App</span> <i data-lucide="chevron-right" class="w-3 h-3"></i> <span id="breadcrumb">Ashutosh_Dang.java</span>
+            <span>Enterprise_App</span> <i data-lucide="chevron-right" class="w-3 h-3"></i> <span>src</span> <i data-lucide="chevron-right" class="w-3 h-3"></i> <span id="breadcrumb-file" class="text-ideText">Ashutosh_Dang.java</span>
         </div>
     </header>
 
     <div class="flex flex-1 overflow-hidden">
-        <aside class="w-64 bg-ideSidebar border-r border-ideHeader flex flex-col hidden md:flex">
-            <div class="p-2 text-[11px] font-bold uppercase text-ideComment flex justify-between">
-                <span>Project</span>
-                <i data-lucide="settings" class="w-3 h-3"></i>
+        <aside class="w-72 bg-ideSidebar border-r border-[#3c3f41] flex flex-col hidden md:flex">
+            <div class="p-2 text-[11px] font-bold uppercase text-ideComment flex justify-between items-center">
+                <span>Project Explorer</span>
+                <i data-lucide="more-vertical" class="w-3 h-3"></i>
             </div>
             <div class="flex-1 px-2 space-y-1 py-2 overflow-y-auto custom-scroll">
-                <div class="flex items-center gap-2 text-ideText"><i data-lucide="chevron-down" class="w-3 h-3"></i> <i data-lucide="folder-kanban" class="w-4 h-4 text-ideAccent"></i> src</div>
-                <div class="pl-6 flex items-center gap-2 text-white bg-ideAccent/20 px-1 rounded"><i data-lucide="file-json" class="w-4 h-4 text-orange-400"></i> Ashutosh_Dang.java</div>
-                <div class="pl-6 flex items-center gap-2 text-ideText opacity-70"><i data-lucide="file-text" class="w-4 h-4 text-blue-400"></i> spring-cloud-config.yml</div>
-                <div class="pl-6 flex items-center gap-2 text-ideText opacity-70"><i data-lucide="terminal" class="w-4 h-4 text-green-400"></i> terraform-deploy.tf</div>
+                <div class="flex items-center gap-2 text-ideText"><i data-lucide="chevron-down" class="w-3 h-3"></i> <i data-lucide="folder" class="w-4 h-4 text-ideAccent"></i> Resume_Project</div>
                 
-                <div class="mt-6 pt-4 border-t border-ideHeader">
-                    <div class="px-2 text-[10px] font-bold text-ideAccent mb-2 uppercase tracking-tighter">Commercial Projects</div>
-                    <a href="https://ashutoshdang.github.io/tinyos-studio.html" class="pl-4 flex items-center gap-2 text-yellow-500 hover:text-white mb-2 transition-colors">
-                        <i data-lucide="award" class="w-4 h-4"></i> <span>TinyOS Studio</span>
+                <div class="pl-4 flex items-center gap-2 file-item text-ideText" onclick="loadFile('experience')">
+                    <i data-lucide="file-text" class="w-4 h-4 text-ideType"></i> Experience.md
+                </div>
+
+                <div class="pl-4 flex items-center gap-2 file-item text-ideText" onclick="loadFile('education')">
+                    <i data-lucide="file-text" class="w-4 h-4 text-ideType"></i> Education.md
+                </div>
+
+                <div class="pl-4 flex items-center gap-2 file-item text-ideText" onclick="loadFile('skills')">
+                    <i data-lucide="file-json" class="w-4 h-4 text-blue-400"></i> Skills.json
+                </div>
+
+                <div class="pl-4 flex items-center gap-2 file-item text-white bg-ideAccent/20 px-1" onclick="loadFile('main')">
+                    <i data-lucide="file-code" class="w-4 h-4 text-orange-400"></i> Ashutosh_Dang.java
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-[#3c3f41]">
+                    <div class="px-2 text-[10px] font-bold text-ideComment mb-2 uppercase tracking-wider">Commercial Portfolios</div>
+                    <a href="https://ashutoshdang.github.io/kautilya.github.io/index.html" target="_blank" class="pl-4 py-1 flex items-center gap-2 hover:text-white transition-colors">
+                        <i data-lucide="external-link" class="w-3 h-3 text-ideAccent"></i> Kautilya Framework
                     </a>
-                    <a href="https://ashutoshdang.github.io/kautilya.github.io/index.html" class="pl-4 flex items-center gap-2 text-ideAccent hover:text-white transition-colors">
-                        <i data-lucide="layers" class="w-4 h-4"></i> <span>Kautilya Framework</span>
+                    <a href="https://ashutoshdang.github.io/tinyos-studio.html" target="_blank" class="pl-4 py-1 flex items-center gap-2 hover:text-white transition-colors">
+                        <i data-lucide="external-link" class="w-3 h-3 text-ideAccent"></i> TinyOS Studio
                     </a>
                 </div>
             </div>
@@ -90,49 +93,43 @@
 
         <main class="flex-1 flex flex-col overflow-hidden bg-ideBg">
             <div class="h-9 bg-ideSidebar flex items-center">
-                <div id="tab-java" class="active-tab px-4 h-full flex items-center gap-2 text-xs border-r border-ideHeader cursor-pointer" onclick="switchTab('java')">
+                <div id="active-tab-title" class="active-tab px-4 h-full flex items-center gap-2 text-xs border-r border-[#3c3f41]">
                     <i data-lucide="file-code" class="w-3 h-3 text-orange-400"></i> Ashutosh_Dang.java
                 </div>
-                <div id="tab-new" class="hidden px-4 h-full flex items-center gap-2 text-xs border-r border-ideHeader cursor-pointer" onclick="switchTab('new')">
-                    <i data-lucide="file-plus" class="w-3 h-3 text-green-400"></i> <span id="new-filename">Untitled.java</span>
-                </div>
             </div>
 
-            <div id="editor-java" class="flex-1 overflow-y-auto custom-scroll py-4 flex">
-                <div class="line-number">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12</div>
-                <div class="flex-1 px-4">
+            <div class="flex-1 overflow-y-auto custom-scroll py-4 flex">
+                <div id="line-numbers" class="line-number text-right opacity-50">
+                    1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20
+                </div>
+                <div id="editor-content" class="flex-1 px-4 outline-none" contenteditable="true" spellcheck="false">
                     <span class="text-ideKeyword">package</span> com.ashutosh.dang;<br><br>
-                    <span class="text-ideAnnotation">@EnterpriseProject</span><br>
-                    <span class="text-ideKeyword">public class</span> <span class="text-white">CommercialExpertise</span> {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Commercial Projects Highlight</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">private String</span> project1 = <span class="text-ideString">"TinyOS Studio"</span>;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">private String</span> project2 = <span class="text-ideString">"Kautilya Framework"</span>;<br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public void</span> <span class="text-ideAccent">deploy</span>() {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span class="text-ideString">"Deploying Commercial Grade Software..."</span>);<br>
+                    <span class="text-ideAnnotation">@Service</span><br>
+                    <span class="text-ideKeyword">public class</span> <span class="text-white">SeniorSoftwareEngineer</span> {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Official Tenure: Since May 2018</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">private final double</span> yearsOfExperience = <span class="text-[#2aacb8]">7.7</span>;<br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideAnnotation">@ArchitectureHighlight</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public void</span> <span class="text-[#57aaf7]">gcpModernization</span>() {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Infrastrucure.deploy(<span class="text-ideString">"GKE"</span>, <span class="text-ideString">"Terraform"</span>);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Achieved 50% cost reduction ($0.5M/year)</span><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;}<br>
                     }
                 </div>
             </div>
 
-            <div id="editor-new" class="hidden flex-1 overflow-y-auto custom-scroll py-4 flex">
-                <div class="line-number">1<br>2<br>3<br>4<br>5</div>
-                <div class="flex-1 px-4 text-white focus:outline-none" contenteditable="true" spellcheck="false">
-                    <span class="text-ideKeyword">public class</span> ScratchPad {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Type your enterprise logic here...</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public static void</span> main(String[] args) {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                    }
-                </div>
-            </div>
-
-            <div class="h-32 bg-ideBg border-t border-ideHeader flex flex-col">
+            <div class="h-40 bg-ideBg border-t border-[#3c3f41] flex flex-col">
                 <div class="h-8 bg-ideSidebar flex items-center px-4 gap-6 text-[11px] font-bold">
                     <span class="text-white border-b border-ideAccent h-full flex items-center">Terminal</span>
+                    <span class="text-ideComment text-xs">ashutosh@dang-dev-machine: ~</span>
                 </div>
-                <div class="flex-1 p-2 text-xs font-mono text-ideText">
-                    <div class="text-ideString">ashutosh@dang-dev:~$ ./commercial-deploy.sh</div>
-                    <div class="mt-1 text-ideKeyword">Success: Commercial Assets Linked. Environments Ready.</div>
+                <div class="flex-1 p-3 text-xs font-mono text-ideText overflow-y-auto">
+                    <div class="text-ideString">ashutosh@dang:~$ ./gradlew build --info</div>
+                    <div class="mt-1">
+                        &gt; Task :compileJava UP-TO-DATE<br>
+                        &gt; Task :test SKIPPED<br>
+                        BUILD SUCCESSFUL in 1s<br>
+                        <span class="text-ideKeyword">Status: Ready to deploy enterprise-grade models.</span>
+                    </div>
                 </div>
             </div>
         </main>
@@ -141,31 +138,33 @@
     <script>
         lucide.createIcons();
 
-        function createNewFile() {
-            document.getElementById('tab-new').classList.remove('hidden');
-            switchTab('new');
-        }
+        const fileContents = {
+            main: `<span class="text-ideKeyword">package</span> com.ashutosh.dang;<br><br><span class="text-ideAnnotation">@Service</span><br><span class="text-ideKeyword">public class</span> <span class="text-white">SeniorSoftwareEngineer</span> {<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Official Tenure: Since May 2018</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">private final double</span> yearsOfExperience = <span class="text-[#2aacb8]">7.7</span>;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideAnnotation">@ArchitectureHighlight</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public void</span> <span class="text-[#57aaf7]">gcpModernization</span>() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Infrastrucure.deploy(<span class="text-ideString">"GKE"</span>, <span class="text-ideString">"Terraform"</span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}`,
+            experience: `# Experience\n\n**Associate Software Developer**\nOct 2023 - Present\n- Cloud-native backend architecture\n\n**Senior Software Developer**\nJun 2021 - Oct 2023\n- Spring Boot Microservices\n\n**Technical Analyst**\nMay 2018 - Jun 2021\n- Java/J2EE and EU Tax Compliance`,
+            education: `## Education\n\n- **BTech in ECE**\n  Biju Patnaik University (2008-2012)\n\n- **+2 Science**\n  Rajendra College (2006-2008)\n\n- **10th Standard**\n  GNHS Balangir (2006)`,
+            skills: `{\n  "languages": ["Java 17", "JavaScript", "SQL"],\n  "frameworks": ["Spring Boot", "Angular", "React"],\n  "devops": ["Kubernetes", "GCP", "Terraform", "Docker"],\n  "tools": ["GitHub Actions", "Jenkins", "RabbitMQ"]\n}`
+        };
 
-        function switchTab(type) {
-            const javaEditor = document.getElementById('editor-java');
-            const newEditor = document.getElementById('editor-new');
-            const javaTab = document.getElementById('tab-java');
-            const newTab = document.getElementById('tab-new');
-            const breadcrumb = document.getElementById('breadcrumb');
+        function loadFile(fileId) {
+            const editor = document.getElementById('editor-content');
+            const breadcrumb = document.getElementById('breadcrumb-file');
+            const tabTitle = document.getElementById('active-tab-title');
+            
+            let content = fileContents[fileId];
+            let fileName = fileId === 'main' ? 'Ashutosh_Dang.java' : 
+                          fileId === 'experience' ? 'Experience.md' : 
+                          fileId === 'education' ? 'Education.md' : 'Skills.json';
+            
+            breadcrumb.innerText = fileName;
+            tabTitle.innerHTML = `<i data-lucide="file-text" class="w-3 h-3 text-ideAccent"></i> ${fileName}`;
+            editor.innerHTML = content.replace(/\n/g, '<br>');
+            lucide.createIcons();
 
-            if (type === 'java') {
-                javaEditor.classList.remove('hidden');
-                newEditor.classList.add('hidden');
-                javaTab.classList.add('active-tab');
-                newTab.classList.remove('active-tab');
-                breadcrumb.innerText = "Ashutosh_Dang.java";
-            } else {
-                javaEditor.classList.add('hidden');
-                newEditor.classList.remove('hidden');
-                javaTab.classList.remove('active-tab');
-                newTab.classList.add('active-tab');
-                breadcrumb.innerText = "Untitled.java";
-            }
+            // Refresh line numbers based on content length
+            const lines = content.split('\n').length + 5;
+            let lineStr = "";
+            for(let i=1; i<=lines; i++) lineStr += i + "<br>";
+            document.getElementById('line-numbers').innerHTML = lineStr;
         }
     </script>
 </body>
