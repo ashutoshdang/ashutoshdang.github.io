@@ -44,31 +44,37 @@
         .custom-scroll::-webkit-scrollbar-thumb { background: #3c3f41; border-radius: 4px; }
         .line-number { color: #4b5059; text-align: right; padding-right: 1.5rem; min-width: 3rem; user-select: none; }
         .active-tab { background-color: #1e1f22; border-bottom: 2px solid #3574f0; color: #fff; }
-        .syntax-img { border: 1px solid #3c3f41; margin: 1rem 0; border-radius: 8px; opacity: 0.9; }
         
-        /* Interactive Hover States */
         .menu-item:hover { color: #fff; cursor: pointer; }
         .sidebar-item:hover { background-color: rgba(255,255,255,0.05); cursor: pointer; }
-        .nav-link:hover { text-decoration: underline; color: #fff; }
+        
+        /* Mobile Sidebar Handling */
+        @media (max-width: 768px) {
+            .sidebar-hidden { display: none; }
+            .sidebar-visible { display: flex; position: absolute; z-index: 50; height: calc(100% - 2.25rem); width: 80%; }
+        }
     </style>
 </head>
 <body class="font-mono text-[13px] h-screen flex flex-col">
 
     <header class="h-9 bg-[#2b2d30] border-b border-[#3c3f41] flex items-center px-3 justify-between">
         <div class="flex items-center gap-4 text-xs">
+            <button onclick="toggleSidebar()" class="md:hidden text-ideText hover:text-white">
+                <i data-lucide="menu" class="w-4 h-4"></i>
+            </button>
             <img src="https://resources.jetbrains.com/storage/products/intellij-idea/img/meta/intellij-idea_logo_300x300.png" class="w-4 h-4" alt="IDE Logo">
-            <div class="flex gap-3">
+            <div class="hidden sm:flex gap-3">
                 <span class="menu-item">File</span><span class="menu-item">Edit</span><span class="menu-item">View</span><span class="menu-item">Navigate</span><span class="menu-item">Code</span><span class="menu-item">Analyze</span><span class="menu-item">Refactor</span><span class="menu-item">Build</span><span class="menu-item">Run</span>
             </div>
         </div>
-        <div class="flex items-center gap-2 text-[10px] text-ideComment">
-            <span>Enterprise_App</span> <i data-lucide="chevron-right" class="w-3 h-3"></i> <span>src</span> <i data-lucide="chevron-right" class="w-3 h-3"></i> <span class="text-ideText">Ashutosh_Dang.java</span>
+        <div class="flex items-center gap-2 text-[10px] text-ideComment truncate ml-2">
+            <span class="hidden xs:inline">Enterprise_App</span> <i data-lucide="chevron-right" class="w-3 h-3 hidden xs:block"></i> <span>src</span> <i data-lucide="chevron-right" class="w-3 h-3"></i> <span class="text-ideText">Ashutosh_Dang.java</span>
         </div>
     </header>
 
-    <div class="flex flex-1 overflow-hidden">
+    <div class="flex flex-1 overflow-hidden relative">
         
-        <aside class="w-64 bg-ideSidebar border-r border-[#3c3f41] flex flex-col hidden md:flex">
+        <aside id="sidebar" class="w-64 bg-ideSidebar border-r border-[#3c3f41] flex flex-col sidebar-hidden md:flex">
             <div class="p-2 text-[11px] font-bold uppercase text-ideComment flex justify-between items-center">
                 <span>Project</span>
                 <i data-lucide="more-vertical" class="w-3 h-3 cursor-pointer hover:text-white"></i>
@@ -88,7 +94,7 @@
             </div>
         </aside>
 
-        <main class="flex-1 flex flex-col overflow-hidden bg-ideBg">
+        <main class="flex-1 flex flex-col overflow-hidden bg-ideBg w-full">
             <div class="h-9 bg-ideSidebar flex items-center">
                 <div class="active-tab px-4 h-full flex items-center gap-2 text-xs border-r border-[#3c3f41] cursor-default">
                     <i data-lucide="file-code" class="w-3 h-3 text-orange-400"></i> Ashutosh_Dang.java
@@ -96,12 +102,19 @@
             </div>
 
             <div class="flex-1 overflow-y-auto custom-scroll py-4 flex">
-                <div class="line-number">
-                    1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51<br>52<br>53<br>54<br>55<br>56<br>57<br>58
+                <div class="line-number hidden sm:block">
+                    1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41
                 </div>
-                <div class="flex-1 px-4">
+                <div class="flex-1 px-4 whitespace-nowrap sm:whitespace-normal overflow-x-auto sm:overflow-x-visible">
                     <span class="text-ideKeyword">package</span> com.ashutosh.dang;<br><br>
                     
+                    <span class="text-ideComment">/**<br>
+                    &nbsp;* Senior Software Engineer with a focus on enterprise-grade architecture.<br>
+                    &nbsp;* Specializing in Cloud-Native systems and high-traffic logistics solutions.<br>
+                    &nbsp;* <br>
+                    &nbsp;* @author Ashutosh Dang<br>
+                    &nbsp;* @version 2026.02.03<br>
+                    &nbsp;*/</span><br>
                     <span class="text-ideAnnotation">@Service</span><br>
                     <span class="text-ideKeyword">public class</span> <span class="text-white">SeniorSoftwareEngineer</span> {<br><br>
                     
@@ -112,26 +125,11 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideAnnotation">@ArchitectureHighlight</span><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public void</span> <span class="text-[#57aaf7]">eventDrivenDesign</span>() {<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Messaging.use(<span class="text-ideString">"RabbitMQ"</span>, <span class="text-ideString">"Eureka"</span>, <span class="text-ideString">"Zuul"</span>);<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Enhancing resilience and async communication for high-traffic logistics.</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideAnnotation">@ArchitectureHighlight</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public void</span> <span class="text-[#57aaf7]">observabilityStack</span>() {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pipeline.build(<span class="text-ideString">"ELK_STACK"</span>, <span class="text-ideString">"FluentD"</span>);<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Troubleshooting time slashed by 40%.</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideAnnotation">@ArchitectureHighlight</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public void</span> <span class="text-[#57aaf7]">fiscalIntegrity</span>() {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Security.enable(<span class="text-ideString">"Blockchain-style signature chaining"</span>);<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// 100% tamper-proof data audits for European tax compliance.</span><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
 
                     &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideAnnotation">@CloudAutomation</span><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public void</span> <span class="text-[#57aaf7]">gcpModernization</span>() {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Infrastrucure.deploy(<span class="text-ideString">"GKE"</span>, <span class="text-ideString">"Terraform"</span>, <span class="text-ideString">"GitHub Actions"</span>);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Infrastructure.deploy(<span class="text-ideString">"GKE"</span>, <span class="text-ideString">"Terraform"</span>, <span class="text-ideString">"GitHub Actions"</span>);<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Achieved 50% cost reduction ($0.5M/year) at Deutsche Bank.</span><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
 
@@ -139,39 +137,34 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Experience.add(<span class="text-ideString">"Deutsche Bank"</span>, <span class="text-ideString">"Modernized Java 17 Position Service"</span>);<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Experience.add(<span class="text-ideString">"Happiest Minds"</span>, <span class="text-ideString">"POS Fiscal Compliance (EU Standards)"</span>);<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Experience.add(<span class="text-ideString">"SDRC"</span>, <span class="text-ideString">"Public Health & Logistics Microservices"</span>);<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
-                    
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideAnnotation">@TestDrivenDevelopment</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public void</span> <span class="text-[#57aaf7]">qualityAssurance</span>() {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Automate.run(<span class="text-ideString">"Cucumber BDD"</span>, <span class="text-ideString">"JUnit"</span>, <span class="text-ideString">"Mockito"</span>);<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Ensuring 99% on-time delivery with production-grade stability.</span><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;}<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;}
                 </div>
             </div>
 
             <div class="h-40 bg-ideBg border-t border-[#3c3f41] flex flex-col">
-                <div class="h-8 bg-ideSidebar flex items-center px-4 gap-6 text-[11px] font-bold">
-                    <span class="text-white border-b border-ideAccent h-full flex items-center cursor-pointer">Terminal</span>
-                    <span class="text-ideComment text-xs">ashutosh@dang-dev-machine: ~</span>
+                <div class="h-8 bg-ideSidebar flex items-center px-4 gap-6 text-[11px] font-bold overflow-x-auto">
+                    <span class="text-white border-b border-ideAccent h-full flex items-center cursor-pointer whitespace-nowrap">Terminal</span>
+                    <span class="text-ideComment text-xs whitespace-nowrap">ashutosh@dang-dev-machine: ~</span>
                 </div>
                 <div class="flex-1 p-3 text-xs font-mono text-ideText overflow-y-auto">
                     <div class="text-ideString">ashutosh@dang:~$ curl -X GET "https://ashutoshdang.github.io/api/v1/summary"</div>
                     <div class="mt-1">
-                        {<br>
-                        &nbsp;&nbsp;"status": "ACTIVE_FOR_HIRE",<br>
-                        &nbsp;&nbsp;"uptime": "99.9%",<br>
-                        &nbsp;&nbsp;"location": "Bangalore, India",<br>
-                        &nbsp;&nbsp;"contact": "techasutos@gmail.com",<br>
-                        &nbsp;&nbsp;"skills": ["Spring Boot 3", "Spring Cloud", "Kubernetes", "GCP", "RabbitMQ"]<br>
-                        }<br>
+                        { "status": "ACTIVE_FOR_HIRE", "uptime": "99.9%", "location": "Bangalore" }
                     </div>
-                    <div class="text-ideKeyword mt-1">Compilation successful. 0 errors, 0 warnings.</div>
+                    <div class="text-ideKeyword mt-1">Compilation successful. 0 errors.</div>
                 </div>
             </div>
         </main>
     </div>
 
-    <script>lucide.createIcons();</script>
+    <script>
+        lucide.createIcons();
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('sidebar-hidden');
+            sidebar.classList.toggle('sidebar-visible');
+        }
+    </script>
 </body>
 </html>
