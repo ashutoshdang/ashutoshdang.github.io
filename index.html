@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashutosh Dang | Cloud-Native Architect</title>
+    <title>Ashutosh Dang | Senior Microservices Specialist</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,235 +14,181 @@
             theme: {
                 extend: {
                     fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
-                    colors: {
-                        primary: "#2563eb",
-                        dark: "#09090b",
-                        surface: "#fafafa"
-                    }
+                    colors: { primary: "#2563eb", dark: "#09090b", surface: "#fafafa" }
                 }
             }
         }
     </script>
     <style>
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(228, 228, 231, 0.5); }
-        .gradient-text { background: linear-gradient(90deg, #2563eb, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-blur { backdrop-filter: blur(8px); background: rgba(255,255,255,0.8); }
+        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(228, 228, 231, 0.5); }
+        .gradient-text { background: linear-gradient(90deg, #2563eb, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .tech-pill { border: 1px solid #e4e4e7; background: white; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; color: #71717a; transition: all 0.2s; }
+        .tech-pill:hover { border-color: #2563eb; color: #2563eb; transform: translateY(-2px); }
     </style>
 </head>
-<body class="bg-surface text-dark antialiased font-sans overflow-x-hidden">
+<body class="bg-surface text-dark antialiased font-sans">
 
-    <nav class="fixed top-0 w-full z-50 nav-blur border-b border-zinc-200">
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-zinc-200">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-dark rounded-lg flex items-center justify-center text-white font-bold text-xs">AD</div>
-                <span class="font-extrabold tracking-tighter text-lg uppercase">Studio<span class="text-primary">.</span></span>
-            </div>
-            
-            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-500">
-                <a href="#about" class="hover:text-primary transition-all">About</a>
+            <div class="font-bold tracking-tighter text-xl">AD<span class="text-primary">.STUDIO</span></div>
+            <div class="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-zinc-500">
                 <a href="#experience" class="hover:text-primary transition-all">Experience</a>
+                <a href="#stack" class="hover:text-primary transition-all">Stack</a>
                 <div class="relative group cursor-pointer">
-                    <span class="flex items-center gap-1 hover:text-primary transition-all">Projects <i data-lucide="chevron-down" class="w-4 h-4"></i></span>
-                    <div class="absolute left-0 mt-2 w-48 bg-white shadow-2xl rounded-xl border border-zinc-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all p-2">
-                        <a href="https://ashutoshdang.github.io/kautilya.github.io/index.html" class="block px-4 py-2 hover:bg-zinc-50 rounded-lg text-xs">Kautilya Framework</a>
-                        <a href="https://ashutoshdang.github.io/tinyos-studio.html" class="block px-4 py-2 hover:bg-zinc-50 rounded-lg text-xs">TinyOS Studio</a>
+                    <span class="flex items-center gap-1 hover:text-primary transition-all">Commercial Projects <i data-lucide="chevron-down" class="w-3 h-3"></i></span>
+                    <div class="absolute left-0 mt-4 w-56 bg-white shadow-xl rounded-xl border border-zinc-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all p-2">
+                        <a href="https://ashutoshdang.github.io/kautilya.github.io/index.html" class="block px-4 py-2 hover:bg-zinc-50 rounded-lg text-xs normal-case tracking-normal">Kautilya: Enterprise Framework</a>
+                        <a href="https://ashutoshdang.github.io/tinyos-studio.html" class="block px-4 py-2 hover:bg-zinc-50 rounded-lg text-xs normal-case tracking-normal">TinyOS: Cloud Studio</a>
                     </div>
                 </div>
-                <a href="#skills" class="hover:text-primary transition-all">Tech Stack</a>
             </div>
-
-            <a href="mailto:techasutos@gmail.com" class="bg-dark text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-primary transition-all">GET IN TOUCH</a>
+            <a href="#contact" class="bg-dark text-white px-6 py-2 rounded-full text-xs font-bold hover:bg-primary transition-all">HIRE ME</a>
         </div>
     </nav>
 
-    <section id="about" class="pt-40 pb-20 px-6 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-        <div class="space-y-8 reveal">
-            <div class="inline-flex items-center gap-2 bg-blue-50 text-primary px-4 py-1.5 rounded-full text-xs font-bold border border-blue-100">
-                <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span>
-                Available for Enterprise Architecture
-            </div>
-            <h1 class="text-6xl lg:text-8xl font-black tracking-tight leading-[0.9]">
-                Ashutosh <span class="gradient-text">Dang.</span>
+    <section class="pt-40 pb-20 px-6 max-w-6xl mx-auto">
+        <div class="reveal space-y-6">
+            <h1 class="text-5xl md:text-8xl font-black tracking-tight leading-none">
+                Engineering Scalable <br><span class="gradient-text">Cloud Ecosystems.</span>
             </h1>
-            <p class="text-xl text-zinc-500 font-medium max-w-lg">
-                Senior Software Engineer specializing in <span class="text-dark underline decoration-primary decoration-2 underline-offset-4">Cloud-Native Microservices</span> and Event-Driven Architectures.
+            <p class="text-xl text-zinc-500 max-w-3xl font-medium leading-relaxed">
+                Senior Software Engineer with **7.7+ years of expertise** in Java-based microservices. I specialize in Spring Boot 3, Spring Cloud orchestration, and GCP-native automation. 
             </p>
-            <div class="flex items-center gap-6">
-                <div class="flex flex-col">
-                    <span class="text-3xl font-bold">7.6+</span>
-                    <span class="text-xs font-bold text-zinc-400 uppercase tracking-widest">Years Exp.</span>
-                </div>
-                <div class="w-px h-10 bg-zinc-200"></div>
-                <div class="flex flex-col">
-                    <span class="text-3xl font-bold">99.9%</span>
-                    <span class="text-xs font-bold text-zinc-400 uppercase tracking-widest">Uptime Achieved</span>
-                </div>
-            </div>
-        </div>
-        <div class="relative reveal delay-200">
-            <div class="absolute -inset-4 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-[2rem] opacity-10 blur-2xl"></div>
-            <div class="glass-card p-8 rounded-[2rem] space-y-6 relative">
-                <h3 class="font-mono text-sm font-bold text-primary">// Career_Summary.log</h3>
-                <p class="text-sm leading-relaxed text-zinc-600 font-medium">
-                    Modernized 4+ enterprise systems with zero downtime. Delivered **$500K annual savings** for Deutsche Bank through Kubernetes orchestration. Specialized in Java 17, Spring Boot 3, and GCP automation via Terraform.
-                </p>
-                <div class="flex gap-3">
-                    <a href="https://github.com/ashutoshdang" class="p-3 bg-zinc-100 rounded-xl hover:bg-dark hover:text-white transition-all"><i data-lucide="github"></i></a>
-                    <a href="https://linkedin.com/in/ashutosh-dang/" class="p-3 bg-zinc-100 rounded-xl hover:bg-blue-600 hover:text-white transition-all"><i data-lucide="linkedin"></i></a>
-                </div>
+            <div class="flex flex-wrap gap-3">
+                <span class="tech-pill border-blue-200 text-blue-600 bg-blue-50">Java 17 Specialists</span>
+                <span class="tech-pill">Spring Boot 3</span>
+                <span class="tech-pill">GCP Certified</span>
+                <span class="tech-pill">Kubernetes</span>
+                <span class="tech-pill">Terraform IaC</span>
             </div>
         </div>
     </section>
 
-    <section class="bg-dark py-24 text-white">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
-            <div class="reveal space-y-4">
-                <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center"><i data-lucide="cpu" class="text-primary"></i></div>
-                <h4 class="text-lg font-bold">Event-Driven Architecture</h4>
-                <p class="text-zinc-400 text-sm">RabbitMQ, Eureka, and Zuul implementation for high-resilience microservices.</p>
+    <section class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-4 gap-6 reveal">
+            <div class="glass-card p-6 rounded-2xl">
+                <h4 class="text-3xl font-black text-primary">$0.5M</h4>
+                <p class="text-xs font-bold text-zinc-400 uppercase mt-2">Annual Infra Savings</p>
             </div>
-            <div class="reveal delay-100 space-y-4">
-                <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center"><i data-lucide="line-chart" class="text-primary"></i></div>
-                <h4 class="text-lg font-bold">Observability Stack</h4>
-                <p class="text-zinc-400 text-sm">ELK (Elasticsearch, Logstash, Kibana) + FluentD for real-time visibility.</p>
+            <div class="glass-card p-6 rounded-2xl">
+                <h4 class="text-3xl font-black text-primary">99.9%</h4>
+                <p class="text-xs font-bold text-zinc-400 uppercase mt-2">System Availability</p>
             </div>
-            <div class="reveal delay-200 space-y-4">
-                <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center"><i data-lucide="shield-check" class="text-primary"></i></div>
-                <h4 class="text-lg font-bold">Fiscal Compliance</h4>
-                <p class="text-zinc-400 text-sm">Blockchain-style fiscal signature chaining for tamper-proof tax data (EU standards).</p>
+            <div class="glass-card p-6 rounded-2xl">
+                <h4 class="text-3xl font-black text-primary">4+</h4>
+                <p class="text-xs font-bold text-zinc-400 uppercase mt-2">Legacy Modernizations</p>
+            </div>
+            <div class="glass-card p-6 rounded-2xl">
+                <h4 class="text-3xl font-black text-primary">30%</h4>
+                <p class="text-xs font-bold text-zinc-400 uppercase mt-2">CI/CD Acceleration</p>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="py-32 px-6 max-w-5xl mx-auto space-y-20">
-        <div class="text-center space-y-4 reveal">
-            <h2 class="text-4xl font-black uppercase italic tracking-tighter">Professional Track</h2>
-            <p class="text-zinc-400 font-mono text-sm">Deployment_History_v2.026</p>
-        </div>
-
-        <div class="space-y-16">
-            <div class="grid md:grid-cols-[200px_1fr] gap-8 reveal">
-                <div class="text-sm font-bold font-mono text-zinc-400">OCT 2023 — PRESENT</div>
-                <div class="space-y-4">
-                    <div class="flex items-center gap-3">
-                        <h3 class="text-2xl font-bold">Deutsche Bank</h3>
-                        <span class="bg-zinc-100 px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest">Associate SE</span>
-                    </div>
-                    <p class="text-zinc-600 leading-relaxed font-medium">
-                        Led end-to-end modernization of **Position Service** to Java 17. Re-architected monoliths into GKE microservices, cutting infrastructure costs by **50% ($0.5M annually)**. Built IaC with Terraform and automated CI/CD via GitHub Actions.
-                    </p>
-                </div>
+    <section class="py-20 px-6 bg-dark text-white rounded-[3rem] mx-4">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16">
+            <div class="reveal space-y-8">
+                <h2 class="text-4xl font-black tracking-tighter uppercase italic">Architecture Highlights</h2>
+                <ul class="space-y-6">
+                    <li class="flex gap-4">
+                        <i data-lucide="zap" class="text-primary shrink-0"></i>
+                        <p class="text-zinc-400 text-sm leading-relaxed"><strong class="text-white block mb-1">Event-Driven Design</strong> Developed microservices using RabbitMQ, Eureka, and Zuul—enhancing service resilience and enabling asynchronous communication for high-traffic logistics systems.</p>
+                    </li>
+                    <li class="flex gap-4">
+                        <i data-lucide="eye" class="text-primary shrink-0"></i>
+                        <p class="text-zinc-400 text-sm leading-relaxed"><strong class="text-white block mb-1">Observability & ELK</strong> Built centralized log aggregation pipelines (Elasticsearch, Kibana, FluentD), slashing troubleshooting time by 40%.</p>
+                    </li>
+                    <li class="flex gap-4">
+                        <i data-lucide="shield" class="text-primary shrink-0"></i>
+                        <p class="text-zinc-400 text-sm leading-relaxed"><strong class="text-white block mb-1">Fiscal Integrity</strong> Engineered blockchain-style signature chaining for European tax compliance, ensuring 100% tamper-proof data audits.</p>
+                    </li>
+                </ul>
             </div>
-
-            <div class="grid md:grid-cols-[200px_1fr] gap-8 reveal">
-                <div class="text-sm font-bold font-mono text-zinc-400">JUN 2021 — OCT 2023</div>
-                <div class="space-y-4">
-                    <div class="flex items-center gap-3">
-                        <h3 class="text-2xl font-bold">Happiest Minds</h3>
-                        <span class="bg-zinc-100 px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest">Senior Developer</span>
-                    </div>
-                    <p class="text-zinc-600 leading-relaxed font-medium">
-                        Delivered fiscalization-compliant POS systems for Manhattan Associates. Engineered digital certificate management improving validation integrity by **70%**.
-                    </p>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-[200px_1fr] gap-8 reveal border-l-2 border-primary/20 pl-8 ml-[-2px]">
-                <div class="text-sm font-bold font-mono text-primary">MAY 2018 — JUN 2021</div>
-                <div class="space-y-8">
-                    <div>
-                        <h3 class="text-2xl font-bold">SDRC Pvt. Ltd.</h3>
-                        <p class="text-zinc-500 font-bold text-sm uppercase">Technical Analyst</p>
-                    </div>
-                    
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="p-5 bg-white border border-zinc-100 rounded-2xl shadow-sm">
-                            <h4 class="font-bold text-sm mb-2 text-primary">DDMS (PLAN India)</h4>
-                            <p class="text-xs text-zinc-500">Architected logistics microservices improving last-mile delivery by 30% using PostGIS route optimization.</p>
-                        </div>
-                        <div class="p-5 bg-white border border-zinc-100 rounded-2xl shadow-sm">
-                            <h4 class="font-bold text-sm mb-2 text-primary">SDG Tool (UNDP)</h4>
-                            <p class="text-xs text-zinc-500">Built monitoring platform for 17 Sustainable Goals. Improved transparency through automated visualization pipelines.</p>
-                        </div>
+            <div class="reveal delay-200">
+                
+                <div class="p-8 bg-zinc-900 rounded-3xl border border-white/10 space-y-4">
+                    <h4 class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Enterprise Workflow</h4>
+                    <p class="text-lg font-medium italic">"Transforming legacy monoliths into GKE-orchestrated microservices while maintaining 99.9% uptime."</p>
+                    <div class="pt-4 border-t border-white/5 flex gap-4">
+                         <div class="text-center"><p class="text-xl font-bold">60%</p><p class="text-[10px] text-zinc-500 uppercase">Manual Effort Reduction</p></div>
+                         <div class="text-center"><p class="text-xl font-bold">70%</p><p class="text-[10px] text-zinc-500 uppercase">Integrity Validation</p></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="py-24 bg-zinc-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-4 gap-8">
-                <div class="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm reveal">
-                    <h5 class="text-xs font-black uppercase text-zinc-400 mb-6 tracking-tighter">Core Backend</h5>
-                    <div class="flex flex-wrap gap-4">
-                        <i class="devicon-java-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
-                        <i class="devicon-spring-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
-                        <i class="devicon-hibernate-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
-                    </div>
+    <section id="stack" class="py-32 px-6 max-w-6xl mx-auto space-y-12">
+        <div class="text-center space-y-2 reveal">
+            <h2 class="text-4xl font-black tracking-tighter uppercase">The Technical Core</h2>
+            <p class="text-zinc-500 font-mono text-xs uppercase tracking-widest">Enterprise_Tech_Stack_v2.6</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="p-8 border border-zinc-200 rounded-3xl space-y-6 reveal">
+                <h3 class="font-bold flex items-center gap-2"><i data-lucide="layers" class="text-primary"></i> Frameworks</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tech-pill">Spring Boot</span>
+                    <span class="tech-pill">Spring Cloud</span>
+                    <span class="tech-pill">Hibernate/JPA</span>
+                    <span class="tech-pill">Spring Security (OAuth2)</span>
+                    <span class="tech-pill">JUnit/Mockito</span>
+                    <span class="tech-pill">Cucumber BDD</span>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm reveal delay-100">
-                    <h5 class="text-xs font-black uppercase text-zinc-400 mb-6 tracking-tighter">Cloud & DevOps</h5>
-                    <div class="flex flex-wrap gap-4">
-                        <i class="devicon-googlecloud-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
-                        <i class="devicon-terraform-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
-                        <i class="devicon-kubernetes-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
-                        <i class="devicon-docker-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
-                    </div>
+            </div>
+            <div class="p-8 border border-zinc-200 rounded-3xl space-y-6 reveal delay-100">
+                <h3 class="font-bold flex items-center gap-2"><i data-lucide="cloud" class="text-primary"></i> Cloud & DevOps</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tech-pill">GCP (GKE)</span>
+                    <span class="tech-pill">Terraform</span>
+                    <span class="tech-pill">Kubernetes</span>
+                    <span class="tech-pill">Docker</span>
+                    <span class="tech-pill">GitHub Actions</span>
+                    <span class="tech-pill">Jenkins</span>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm reveal delay-200">
-                    <h5 class="text-xs font-black uppercase text-zinc-400 mb-6 tracking-tighter">Data & Messaging</h5>
-                    <div class="flex flex-wrap gap-4">
-                        <i class="devicon-postgresql-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
-                        <i class="devicon-mongodb-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
-                        <i class="devicon-mysql-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
-                    </div>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm reveal delay-300">
-                    <h5 class="text-xs font-black uppercase text-zinc-400 mb-6 tracking-tighter">Automation</h5>
-                    <ul class="text-xs font-bold text-zinc-500 space-y-2">
-                        <li>Cucumber / Selenium</li>
-                        <li>JUnit / Mockito</li>
-                        <li>Jasper Reports</li>
-                    </ul>
+            </div>
+            <div class="p-8 border border-zinc-200 rounded-3xl space-y-6 reveal delay-200">
+                <h3 class="font-bold flex items-center gap-2"><i data-lucide="database" class="text-primary"></i> Data & Messaging</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tech-pill">RabbitMQ</span>
+                    <span class="tech-pill">IBM MQ</span>
+                    <span class="tech-pill">PostgreSQL</span>
+                    <span class="tech-pill">MongoDB</span>
+                    <span class="tech-pill">Elasticsearch</span>
+                    <span class="tech-pill">Cloud SQL</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-24 px-6 text-center space-y-12">
-        <div class="reveal">
-            <h2 class="text-5xl font-black tracking-tighter uppercase italic">Ready to Scale?</h2>
-            <p class="text-zinc-500 max-w-md mx-auto mt-4 font-medium">Currently seeking Associate Software Engineer and Specialist roles in cloud-native development.</p>
-        </div>
-        
-        <div class="flex flex-col items-center gap-4 reveal delay-100">
-            <a href="mailto:techasutos@gmail.com" class="text-2xl font-bold hover:text-primary transition-all">techasutos@gmail.com</a>
-            <div class="text-sm font-mono text-zinc-400 tracking-widest">+91-6370202783</div>
-        </div>
+    <footer id="contact" class="py-32 border-t border-zinc-200">
+        <div class="max-w-4xl mx-auto px-6 text-center space-y-12">
+            <div class="reveal">
+                <h2 class="text-5xl font-black tracking-tighter uppercase mb-4">Let's Connect</h2>
+                <p class="text-zinc-500 font-medium">Available for leadership roles and enterprise cloud transformation projects.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-4 reveal delay-100">
+                <a href="mailto:techasutos@gmail.com" class="p-6 glass-card rounded-2xl flex items-center justify-center gap-3 font-bold hover:border-primary transition-all">
+                    <i data-lucide="mail" class="text-primary"></i> techasutos@gmail.com
+                </a>
+                <a href="tel:+916370202783" class="p-6 glass-card rounded-2xl flex items-center justify-center gap-3 font-bold hover:border-primary transition-all">
+                    <i data-lucide="phone" class="text-primary"></i> +91 6370202783
+                </a>
+            </div>
 
-        <div class="pt-12 border-t border-zinc-100 text-[10px] font-bold text-zinc-400 uppercase tracking-[0.3em]">
-            Ashutosh Dang © 2026 | Built for Enterprise Impact
+            <div class="pt-20 text-[10px] font-black text-zinc-300 uppercase tracking-[0.5em]">
+                Ashutosh Dang • Since May 2018 • Bangalore, India
+            </div>
         </div>
     </footer>
 
     <script>
-        // Lucide Icons
         lucide.createIcons();
-
-        // Reveal on Scroll
-        const observerOptions = { threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        const obs = new IntersectionObserver((es) => es.forEach(e => e.isIntersecting && e.target.classList.add('active')), {threshold: 0.1});
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     </script>
 </body>
 </html>
