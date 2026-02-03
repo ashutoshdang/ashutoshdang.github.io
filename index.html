@@ -204,59 +204,28 @@
 </div>
 
 <!-- Terminal -->
-<!-- ================= TERMINAL ================= -->
-<div class="
-    bg-ideBg border-t border-[#3c3f41] flex flex-col
-    h-auto
-    max-h-[35vh]
-    md:h-40
-  ">
-  <!-- Terminal Header -->
-  <div class="
-      bg-ideSidebar flex items-center gap-3
-      px-3 py-1.5
-      text-[11px] font-bold
-      flex-wrap
-    ">
-    <span class="text-white border-b border-ideAccent">
-      Terminal
-    </span>
-    <span class="
-        text-ideComment text-[10px]
-        truncate
-        max-w-full
-        md:max-w-none
-      ">
-      ashutosh@dang-dev-machine: ~
-    </span>
-  </div>
-  <!-- Terminal Body -->
-  <div class="
-      flex-1 p-3
-      text-[11px] md:text-xs
-      font-mono text-ideText
-      overflow-y-auto overflow-x-hidden
-      custom-scroll
-      break-words
-    ">
-    <div class="text-ideString break-all">
-      ashutosh@dang:~$ curl -X GET
-      "https://ashutoshdang.github.io/api/v1/summary"
+<div class="h-32 md:h-40 bg-ideBg border-t border-[#3c3f41] flex flex-col">
+    <div class="h-8 bg-ideSidebar flex items-center px-4 gap-6 text-[11px] font-bold">
+        <span class="text-white border-b border-ideAccent h-full flex items-center">Terminal</span>
+        <span class="text-ideComment text-xs">ashutosh@dang-dev-machine: ~</span>
     </div>
-    <div class="mt-2 whitespace-pre-wrap">
-      {<br>
+    <div class="flex-1 p-3 text-xs font-mono text-ideText overflow-y-auto custom-scroll">
+        <div class="text-ideString">
+            ashutosh@dang:~$ curl -X GET "https://ashutoshdang.github.io/api/v1/summary"
+        </div>
+        <div class="mt-1">
+            {<br>
             &nbsp;&nbsp;"status": "ACTIVE_FOR_HIRE",<br>
             &nbsp;&nbsp;"uptime": "99.9%",<br>
             &nbsp;&nbsp;"location": "Bangalore, India",<br>
             &nbsp;&nbsp;"contact": "techasutos@gmail.com",<br>
             &nbsp;&nbsp;"skills": ["Spring Boot 3", "Spring Cloud", "Kubernetes", "GCP", "RabbitMQ"]<br>
-      }<br>
+            }<br>
+        </div>
+        <div class="text-ideKeyword mt-1">
+            Compilation successful. 0 errors, 0 warnings.
+        </div>
     </div>
-
-    <div class="text-ideKeyword mt-2">
-      Compilation successful. 0 errors, 0 warnings.
-    </div>
-  </div>
 </div>
 
 </main>
