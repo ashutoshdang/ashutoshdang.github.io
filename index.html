@@ -34,11 +34,8 @@
         .custom-scroll::-webkit-scrollbar-track { background: #1e1f22; }
         .custom-scroll::-webkit-scrollbar-thumb { background: #3c3f41; border-radius: 4px; }
         .line-number { color: #4b5059; text-align: right; padding-right: 1.5rem; min-width: 3rem; user-select: none; }
-        .active-tab { background-color: #1e1f22; border-top: 1px solid #3574f0; color: #fff; }
-        .inactive-tab { background-color: #2b2d30; color: #7a7e85; border-right: 1px solid #1e1f22; }
-        .menu-item:hover { background-color: #4b5059; cursor: pointer; border-radius: 4px; }
-        .file-item:hover { background-color: #3c3f41; cursor: pointer; }
-        .hidden-editor { display: none; }
+        .active-tab { background-color: #1e1f22; border-bottom: 2px solid #3574f0; color: #fff; }
+        .syntax-img { border: 1px solid #3c3f41; margin: 1rem 0; border-radius: 8px; opacity: 0.9; }
     </style>
 </head>
 <body class="font-mono text-[13px] h-screen flex flex-col">
@@ -46,16 +43,12 @@
     <header class="h-9 bg-[#2b2d30] border-b border-[#3c3f41] flex items-center px-3 justify-between">
         <div class="flex items-center gap-4 text-xs">
             <img src="https://resources.jetbrains.com/storage/products/intellij-idea/img/meta/intellij-idea_logo_300x300.png" class="w-4 h-4" alt="IDE Logo">
-            <div class="flex gap-1">
-                <span class="px-2 py-0.5 menu-item">File</span>
-                <span class="px-2 py-0.5 menu-item">Edit</span>
-                <span class="px-2 py-0.5 menu-item">View</span>
-                <span class="px-2 py-0.5 menu-item">Run</span>
-                <span class="px-2 py-0.5 menu-item">Help</span>
+            <div class="flex gap-3">
+                <span>File</span><span>Edit</span><span>View</span><span>Navigate</span><span>Code</span><span>Analyze</span><span>Refactor</span><span>Build</span><span>Run</span>
             </div>
         </div>
         <div class="flex items-center gap-2 text-[10px] text-ideComment">
-            <span>Enterprise_App</span> <i data-lucide="chevron-right" class="w-3 h-3"></i> <span id="bread-file">Ashutosh_Dang.java</span>
+            <span>Enterprise_App</span> <i data-lucide="chevron-right" class="w-3 h-3"></i> <span>src</span> <i data-lucide="chevron-right" class="w-3 h-3"></i> <span class="text-ideText">Ashutosh_Dang.java</span>
         </div>
     </header>
 
@@ -64,82 +57,80 @@
         <aside class="w-64 bg-ideSidebar border-r border-[#3c3f41] flex flex-col hidden md:flex">
             <div class="p-2 text-[11px] font-bold uppercase text-ideComment flex justify-between items-center">
                 <span>Project</span>
-                <button class="menu-item p-1"><i data-lucide="plus" class="w-3 h-3" onclick="createNewFile()"></i></button>
+                <i data-lucide="more-vertical" class="w-3 h-3"></i>
             </div>
-            <div class="flex-1 px-1 space-y-1 py-2 overflow-y-auto custom-scroll">
-                <div class="flex items-center gap-2 text-ideText px-2 py-1 file-item"><i data-lucide="chevron-down" class="w-3 h-3"></i> <i data-lucide="folder" class="w-4 h-4 text-ideAccent"></i> Ashutosh_Dang</div>
-                <div class="pl-4 flex items-center gap-2 text-white bg-ideAccent/20 px-2 py-1 cursor-default" id="main-file-nav">
-                    <i data-lucide="file-code" class="w-4 h-4 text-orange-400"></i> Ashutosh_Dang.java
-                </div>
-                <div id="new-file-nav" class="pl-4 flex items-center gap-2 text-ideText px-2 py-1 file-item hidden" onclick="switchTab('scratch')">
-                    <i data-lucide="file-code" class="w-4 h-4 text-orange-400"></i> Scratchpad.java
-                </div>
+            <div class="flex-1 px-2 space-y-1 py-2 overflow-y-auto custom-scroll">
+                <div class="flex items-center gap-2 text-ideText"><i data-lucide="chevron-down" class="w-3 h-3"></i> <i data-lucide="folder" class="w-4 h-4 text-ideAccent"></i> Ashutosh_Dang</div>
+                <div class="pl-4 flex items-center gap-2 text-ideText"><i data-lucide="chevron-down" class="w-3 h-3"></i> <i data-lucide="folder" class="w-4 h-4 text-ideAccent"></i> src</div>
+                <div class="pl-8 flex items-center gap-2 text-white bg-ideAccent/20 px-1"><i data-lucide="file-code" class="w-4 h-4 text-orange-400"></i> Ashutosh_Dang.java</div>
+                <div class="pl-8 flex items-center gap-2 text-ideText"><i data-lucide="file-json" class="w-4 h-4 text-blue-400"></i> spring-cloud-config.yaml</div>
+                <div class="pl-8 flex items-center gap-2 text-ideText"><i data-lucide="terminal" class="w-4 h-4 text-green-400"></i> terraform-deploy.tf</div>
                 
                 <div class="mt-4 pt-4 border-t border-[#3c3f41]">
-                    <div class="px-2 text-[10px] font-bold text-ideComment mb-2 uppercase tracking-tighter">Commercial Assets</div>
-                    <a href="https://ashutoshdang.github.io/tinyos-studio.html" class="pl-4 flex items-center gap-2 file-item py-1"><i data-lucide="zap" class="w-3 h-3 text-yellow-400"></i> TinyOS Studio</a>
-                    <a href="https://ashutoshdang.github.io/kautilya.github.io/index.html" class="pl-4 flex items-center gap-2 file-item py-1"><i data-lucide="box" class="w-3 h-3 text-blue-400"></i> Kautilya Framework</a>
-                </div>
-
-                <div class="mt-6 px-2">
-                    <button onclick="createNewFile()" class="w-full py-2 bg-ideAccent/10 border border-ideAccent/30 rounded text-ideAccent hover:bg-ideAccent hover:text-white transition-all text-[11px] font-bold">
-                        + CREATE NEW FILE
-                    </button>
+                    <div class="px-2 text-[10px] font-bold text-ideComment mb-2 uppercase">Commercial Assets</div>
+                    <a href="https://ashutoshdang.github.io/kautilya.github.io/index.html" class="pl-4 flex items-center gap-2 hover:text-white mb-1"><i data-lucide="external-link" class="w-3 h-3"></i> Kautilya Framework</a>
+                    <a href="https://ashutoshdang.github.io/tinyos-studio.html" class="pl-4 flex items-center gap-2 hover:text-white"><i data-lucide="external-link" class="w-3 h-3"></i> TinyOS Studio</a>
                 </div>
             </div>
         </aside>
 
         <main class="flex-1 flex flex-col overflow-hidden bg-ideBg">
-            <div class="h-9 bg-ideSidebar flex items-center border-b border-[#3c3f41]">
-                <div id="tab-main" class="active-tab px-4 h-full flex items-center gap-2 text-xs cursor-pointer" onclick="switchTab('main')">
+            <div class="h-9 bg-ideSidebar flex items-center">
+                <div class="active-tab px-4 h-full flex items-center gap-2 text-xs border-r border-[#3c3f41]">
                     <i data-lucide="file-code" class="w-3 h-3 text-orange-400"></i> Ashutosh_Dang.java
-                </div>
-                <div id="tab-scratch" class="inactive-tab px-4 h-full flex items-center gap-2 text-xs cursor-pointer hidden" onclick="switchTab('scratch')">
-                    <i data-lucide="file-code" class="w-3 h-3 text-orange-400"></i> Scratchpad.java
-                    <i data-lucide="x" class="w-3 h-3 hover:bg-white/10 rounded" onclick="closeScratch(event)"></i>
                 </div>
             </div>
 
-            <div id="editor-main" class="flex-1 overflow-y-auto custom-scroll py-4 flex">
-                <div class="line-number" id="ln-1"></div>
+            <div class="flex-1 overflow-y-auto custom-scroll py-4 flex">
+                <div class="line-number">
+                    1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51<br>52<br>53<br>54<br>55<br>56<br>57<br>58
+                </div>
                 <div class="flex-1 px-4">
                     <span class="text-ideKeyword">package</span> com.ashutosh.dang;<br><br>
+                    
                     <span class="text-ideAnnotation">@Service</span><br>
                     <span class="text-ideKeyword">public class</span> <span class="text-white">SeniorSoftwareEngineer</span> {<br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Tenure: 7.7 Years (Since May 2018)</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">private final double</span> experience = <span class="text-[#2aacb8]">7.7</span>;<br><br>
+                    
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Official Tenure: Since May 2018</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">private final double</span> yearsOfExperience = <span class="text-[#2aacb8]">7.7</span>;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">private final String</span> focus = <span class="text-ideString">"Cloud-Native & Microservices"</span>;<br><br>
 
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideAnnotation">@CommercialHighlight(asset = "TinyOS")</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public void</span> <span class="text-[#57aaf7]">triggerVoltageWarning</span>(<span class="text-ideKeyword">float</span> vdc) {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Logic for real-time hardware monitoring in TinyOS Studio</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">if</span> (vdc < <span class="text-[#2aacb8]">3.3f</span>) {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UI.showAlert(<span class="text-ideString">"CRITICAL: Low Voltage Detected"</span>);<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Log.warn(<span class="text-ideString">"TinyOS hardware requires immediate power check"</span>);<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideAnnotation">@ArchitectureHighlight</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public void</span> <span class="text-[#57aaf7]">eventDrivenDesign</span>() {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Messaging.use(<span class="text-ideString">"RabbitMQ"</span>, <span class="text-ideString">"Eureka"</span>, <span class="text-ideString">"Zuul"</span>);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Enhancing resilience and async communication for high-traffic logistics.</span><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
 
                     &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideAnnotation">@ArchitectureHighlight</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public void</span> <span class="text-[#57aaf7]">enterpriseModernization</span>() {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Modernized Deutsche Bank Position Service to Java 17</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cloud.modernize(<span class="text-ideString">"GKE"</span>, <span class="text-ideString">"Terraform"</span>);<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Result: $0.5M Annual Savings</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public void</span> <span class="text-[#57aaf7]">observabilityStack</span>() {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pipeline.build(<span class="text-ideString">"ELK_STACK"</span>, <span class="text-ideString">"FluentD"</span>);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Troubleshooting time slashed by 40%.</span><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
 
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public void</span> <span class="text-[#57aaf7]">messagingArchitecture</span>() {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Messaging.setup(<span class="text-ideString">"RabbitMQ"</span>, <span class="text-ideString">"Eureka"</span>, <span class="text-ideString">"Zuul"</span>);<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Implemented for high-traffic logistics (SDRC)</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                    }
-                </div>
-            </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
 
-            <div id="editor-scratch" class="flex-1 overflow-y-auto custom-scroll py-4 flex hidden-editor">
-                <div class="line-number">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9</div>
-                <div class="flex-1 px-4 outline-none" contenteditable="true">
-                    <span class="text-ideKeyword">public class</span> <span class="text-white">Scratchpad</span> {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public static void</span> <span class="text-[#57aaf7]">main</span>(String[] args) {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span class="text-ideString">"Write your commercializable code here..."</span>);<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// syntax highlighting active</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideAnnotation">@ArchitectureHighlight</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public void</span> <span class="text-[#57aaf7]">fiscalIntegrity</span>() {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Security.enable(<span class="text-ideString">"Blockchain-style signature chaining"</span>);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// 100% tamper-proof data audits for European tax compliance.</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideAnnotation">@CloudAutomation</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public void</span> <span class="text-[#57aaf7]">gcpModernization</span>() {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Infrastrucure.deploy(<span class="text-ideString">"GKE"</span>, <span class="text-ideString">"Terraform"</span>, <span class="text-ideString">"GitHub Actions"</span>);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Achieved 50% cost reduction ($0.5M/year) at Deutsche Bank.</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public void</span> <span class="text-[#57aaf7]">professionalExperience</span>() {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Experience.add(<span class="text-ideString">"Deutsche Bank"</span>, <span class="text-ideString">"Modernized Java 17 Position Service"</span>);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Experience.add(<span class="text-ideString">"Happiest Minds"</span>, <span class="text-ideString">"POS Fiscal Compliance (EU Standards)"</span>);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Experience.add(<span class="text-ideString">"SDRC"</span>, <span class="text-ideString">"Public Health & Logistics Microservices"</span>);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+                    
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideAnnotation">@TestDrivenDevelopment</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideKeyword">public void</span> <span class="text-[#57aaf7]">qualityAssurance</span>() {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Automate.run(<span class="text-ideString">"Cucumber BDD"</span>, <span class="text-ideString">"JUnit"</span>, <span class="text-ideString">"Mockito"</span>);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-ideComment">// Ensuring 99% on-time delivery with production-grade stability.</span><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;}<br>
                     }
                 </div>
@@ -148,59 +139,25 @@
             <div class="h-40 bg-ideBg border-t border-[#3c3f41] flex flex-col">
                 <div class="h-8 bg-ideSidebar flex items-center px-4 gap-6 text-[11px] font-bold">
                     <span class="text-white border-b border-ideAccent h-full flex items-center">Terminal</span>
+                    <span class="text-ideComment text-xs">ashutosh@dang-dev-machine: ~</span>
                 </div>
-                <div class="flex-1 p-3 text-xs font-mono text-ideText overflow-y-auto" id="console-out">
-                    <div class="text-ideString">ashutosh@dang:~$ ./gradlew build</div>
-                    <div class="text-ideComment">Task :compileJava UP-TO-DATE</div>
-                    <div class="text-ideComment">Task :processResources NO-SOURCE</div>
-                    <div class="text-ideComment">Task :classes UP-TO-DATE</div>
-                    <div class="text-ideKeyword">BUILD SUCCESSFUL in 1s</div>
+                <div class="flex-1 p-3 text-xs font-mono text-ideText overflow-y-auto">
+                    <div class="text-ideString">ashutosh@dang:~$ curl -X GET "https://ashutoshdang.github.io/api/v1/summary"</div>
+                    <div class="mt-1">
+                        {<br>
+                        &nbsp;&nbsp;"status": "ACTIVE_FOR_HIRE",<br>
+                        &nbsp;&nbsp;"uptime": "99.9%",<br>
+                        &nbsp;&nbsp;"location": "Bangalore, India",<br>
+                        &nbsp;&nbsp;"contact": "techasutos@gmail.com",<br>
+                        &nbsp;&nbsp;"skills": ["Spring Boot 3", "Spring Cloud", "Kubernetes", "GCP", "RabbitMQ"]<br>
+                        }<br>
+                    </div>
+                    <div class="text-ideKeyword mt-1">Compilation successful. 0 errors, 0 warnings.</div>
                 </div>
             </div>
         </main>
     </div>
 
-    <script>
-        lucide.createIcons();
-        
-        // Generate Line Numbers for Main
-        const ln = document.getElementById('ln-1');
-        for(let i=1; i<=45; i++) ln.innerHTML += i + '<br>';
-
-        function createNewFile() {
-            document.getElementById('new-file-nav').classList.remove('hidden');
-            document.getElementById('tab-scratch').classList.remove('hidden');
-            switchTab('scratch');
-        }
-
-        function switchTab(type) {
-            const tMain = document.getElementById('tab-main');
-            const tScratch = document.getElementById('tab-scratch');
-            const eMain = document.getElementById('editor-main');
-            const eScratch = document.getElementById('editor-scratch');
-            const bread = document.getElementById('bread-file');
-
-            if(type === 'scratch') {
-                tMain.className = 'inactive-tab px-4 h-full flex items-center gap-2 text-xs cursor-pointer';
-                tScratch.className = 'active-tab px-4 h-full flex items-center gap-2 text-xs cursor-pointer';
-                eMain.classList.add('hidden-editor');
-                eScratch.classList.remove('hidden-editor');
-                bread.innerText = "Scratchpad.java";
-            } else {
-                tMain.className = 'active-tab px-4 h-full flex items-center gap-2 text-xs cursor-pointer';
-                tScratch.className = 'inactive-tab px-4 h-full flex items-center gap-2 text-xs cursor-pointer';
-                eMain.classList.remove('hidden-editor');
-                eScratch.classList.add('hidden-editor');
-                bread.innerText = "Ashutosh_Dang.java";
-            }
-        }
-
-        function closeScratch(e) {
-            e.stopPropagation();
-            document.getElementById('new-file-nav').classList.add('hidden');
-            document.getElementById('tab-scratch').classList.add('hidden');
-            switchTab('main');
-        }
-    </script>
+    <script>lucide.createIcons();</script>
 </body>
 </html>
