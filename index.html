@@ -3,197 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume - Ashutosh Dang</title>
+    <title>Ashutosh Dang | Cloud-Native Architect</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.10.1/devicon.min.css">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
                     colors: {
-                        border: "hsl(240 5.9% 90%)",
-                        background: "hsl(0 0% 100%)",
-                        foreground: "hsl(240 10% 3.9%)",
-                        primary: "#2563eb", /* Professional Blue */
-                        muted: "hsl(240 4.8% 95.9%)",
+                        primary: "#2563eb",
+                        dark: "#09090b",
+                        surface: "#fafafa"
                     }
                 }
             }
         }
     </script>
     <style>
-        .studio-border { border: 1px solid #e4e4e7; }
-        .nav-link-active { color: #000; font-weight: 600; }
-        .dev-icon { font-size: 2rem; color: #71717a; transition: color 0.2s; }
-        .dev-icon:hover { color: #2563eb; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(228, 228, 231, 0.5); }
+        .gradient-text { background: linear-gradient(90deg, #2563eb, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-blur { backdrop-filter: blur(8px); background: rgba(255,255,255,0.8); }
     </style>
 </head>
-<body class="bg-background text-foreground antialiased font-sans">
+<body class="bg-surface text-dark antialiased font-sans overflow-x-hidden">
 
-    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b studio-border">
-        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="font-bold tracking-tighter text-xl">ASHUTOSH<span class="text-primary">DANG</span></div>
+    <nav class="fixed top-0 w-full z-50 nav-blur border-b border-zinc-200">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-dark rounded-lg flex items-center justify-center text-white font-bold text-xs">AD</div>
+                <span class="font-extrabold tracking-tighter text-lg uppercase">Studio<span class="text-primary">.</span></span>
+            </div>
             
-            <div class="hidden lg:flex items-center gap-6 text-sm font-medium text-neutral-500">
-                <a href="#about" class="hover:text-black transition-colors">About</a>
-                <a href="#experience" class="hover:text-black transition-colors">Experience</a>
-                <a href="#education" class="hover:text-black transition-colors">Education</a>
-                <a href="#skills" class="hover:text-black transition-colors">Skills</a>
-                
-                <div class="relative group">
-                    <button class="flex items-center gap-1 hover:text-black transition-colors">
-                        Projects <i data-lucide="chevron-down" class="w-4 h-4"></i>
-                    </button>
-                    <div class="absolute right-0 mt-2 w-48 bg-white border studio-border rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all p-2">
-                        <a href="https://ashutoshdang.github.io/kautilya.github.io/index.html" class="block px-4 py-2 hover:bg-muted rounded-md text-xs">Kautilya</a>
-                        <a href="https://ashutoshdang.github.io/tinyos-studio.html" class="block px-4 py-2 hover:bg-muted rounded-md text-xs">TinyOS Studio</a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-500">
+                <a href="#about" class="hover:text-primary transition-all">About</a>
+                <a href="#experience" class="hover:text-primary transition-all">Experience</a>
+                <div class="relative group cursor-pointer">
+                    <span class="flex items-center gap-1 hover:text-primary transition-all">Projects <i data-lucide="chevron-down" class="w-4 h-4"></i></span>
+                    <div class="absolute left-0 mt-2 w-48 bg-white shadow-2xl rounded-xl border border-zinc-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all p-2">
+                        <a href="https://ashutoshdang.github.io/kautilya.github.io/index.html" class="block px-4 py-2 hover:bg-zinc-50 rounded-lg text-xs">Kautilya Framework</a>
+                        <a href="https://ashutoshdang.github.io/tinyos-studio.html" class="block px-4 py-2 hover:bg-zinc-50 rounded-lg text-xs">TinyOS Studio</a>
                     </div>
                 </div>
+                <a href="#skills" class="hover:text-primary transition-all">Tech Stack</a>
             </div>
 
-            <a href="#contact" class="bg-primary text-white text-xs px-5 py-2.5 rounded-full hover:shadow-lg transition-all font-semibold">HIRE ME</a>
+            <a href="mailto:techasutos@gmail.com" class="bg-dark text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-primary transition-all">GET IN TOUCH</a>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto px-6 pt-32 pb-20 space-y-24">
-        
-        <section id="about" class="space-y-6">
-            <div class="space-y-4">
-                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight">Ashutosh <span class="text-primary">Dang</span></h1>
-                <div class="font-mono text-sm text-neutral-500 bg-muted inline-block px-3 py-1 rounded">
-                    Bangalore, KA • 637-020-2783 • <a href="mailto:ashutosh.dang06@gmail.com" class="text-primary">ashutosh.dang06@gmail.com</a>
-                </div>
+    <section id="about" class="pt-40 pb-20 px-6 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8 reveal">
+            <div class="inline-flex items-center gap-2 bg-blue-50 text-primary px-4 py-1.5 rounded-full text-xs font-bold border border-blue-100">
+                <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span>
+                Available for Enterprise Architecture
             </div>
-            <p class="text-lg text-neutral-600 leading-relaxed">
-                Results-driven Software Engineer with **7.6+ years of experience** designing and developing scalable, cloud-native, and microservices-based applications. Proven track record of transforming legacy systems into resilient, cost-efficient, and high-performance platforms leveraging **Kubernetes, Terraform, Docker, and modern CI/CD automation.**
+            <h1 class="text-6xl lg:text-8xl font-black tracking-tight leading-[0.9]">
+                Ashutosh <span class="gradient-text">Dang.</span>
+            </h1>
+            <p class="text-xl text-zinc-500 font-medium max-w-lg">
+                Senior Software Engineer specializing in <span class="text-dark underline decoration-primary decoration-2 underline-offset-4">Cloud-Native Microservices</span> and Event-Driven Architectures.
             </p>
-            <div class="flex gap-4">
-                <a href="https://linkedin.com/in/ashutosh-dang/" class="p-3 border studio-border rounded-full hover:bg-primary hover:text-white transition-all"><i data-lucide="linkedin"></i></a>
-                <a href="https://github.com/ashutoshdang" class="p-3 border studio-border rounded-full hover:bg-black hover:text-white transition-all"><i data-lucide="github"></i></a>
-            </div>
-        </section>
-
-        <section id="experience" class="space-y-10">
-            <h2 class="text-3xl font-bold tracking-tight border-b pb-4">Experience</h2>
-            
-            <div class="space-y-12">
-                <div class="group relative pl-8 border-l-2 border-neutral-100 hover:border-primary transition-colors">
-                    <div class="absolute -left-[9px] top-0 w-4 h-4 bg-white border-2 border-primary rounded-full group-hover:bg-primary transition-all"></div>
-                    <div class="flex flex-col md:flex-row md:justify-between items-start mb-2">
-                        <h3 class="text-xl font-bold uppercase">Associate Software Developer</h3>
-                        <span class="text-sm font-mono text-primary font-bold">OCT 2023 - PRESENT</span>
-                    </div>
-                    <p class="text-neutral-600 leading-relaxed">Focusing on crafting efficient backend systems using Spring Boot, implementing CI/CD pipelines with GitHub Actions, and automating deployments to GCP and Kubernetes using Terraform.</p>
+            <div class="flex items-center gap-6">
+                <div class="flex flex-col">
+                    <span class="text-3xl font-bold">7.6+</span>
+                    <span class="text-xs font-bold text-zinc-400 uppercase tracking-widest">Years Exp.</span>
                 </div>
-
-                <div class="group relative pl-8 border-l-2 border-neutral-100">
-                    <div class="absolute -left-[9px] top-0 w-4 h-4 bg-neutral-200 rounded-full"></div>
-                    <div class="flex flex-col md:flex-row md:justify-between items-start mb-2">
-                        <h3 class="text-xl font-bold uppercase">Senior Software Developer</h3>
-                        <span class="text-sm font-mono text-neutral-400">JUN 2021 - OCT 2023</span>
-                    </div>
-                    <p class="text-neutral-600 leading-relaxed">Designing and developing Web applications following microservices architecture and agile practices using frameworks like Spring Boot.</p>
-                </div>
-
-                <div class="group relative pl-8 border-l-2 border-neutral-100">
-                    <div class="absolute -left-[9px] top-0 w-4 h-4 bg-neutral-200 rounded-full"></div>
-                    <div class="flex flex-col md:flex-row md:justify-between items-start mb-2">
-                        <h3 class="text-xl font-bold uppercase">Technical Analyst</h3>
-                        <span class="text-sm font-mono text-neutral-400">MAY 2018 - JUN 2021</span>
-                    </div>
-                    <p class="text-neutral-600 leading-relaxed">Worked with Spring Cloud, Hibernate, Angular, and React. Managed both SQL and NoSQL databases to build robust enterprise solutions.</p>
-                </div>
-
-                <div class="group relative pl-8 border-l-2 border-neutral-100">
-                    <div class="absolute -left-[9px] top-0 w-4 h-4 bg-neutral-200 rounded-full"></div>
-                    <div class="flex flex-col md:flex-row md:justify-between items-start mb-2">
-                        <h3 class="text-xl font-bold uppercase text-neutral-400">Freelance Web Developer</h3>
-                        <span class="text-sm font-mono text-neutral-400">DEC 2014 - 2017</span>
-                    </div>
-                    <p class="text-neutral-600 leading-relaxed italic">Worked on wide range of products from planning to development to shipping final deliverables.</p>
+                <div class="w-px h-10 bg-zinc-200"></div>
+                <div class="flex flex-col">
+                    <span class="text-3xl font-bold">99.9%</span>
+                    <span class="text-xs font-bold text-zinc-400 uppercase tracking-widest">Uptime Achieved</span>
                 </div>
             </div>
-        </section>
+        </div>
+        <div class="relative reveal delay-200">
+            <div class="absolute -inset-4 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-[2rem] opacity-10 blur-2xl"></div>
+            <div class="glass-card p-8 rounded-[2rem] space-y-6 relative">
+                <h3 class="font-mono text-sm font-bold text-primary">// Career_Summary.log</h3>
+                <p class="text-sm leading-relaxed text-zinc-600 font-medium">
+                    Modernized 4+ enterprise systems with zero downtime. Delivered **$500K annual savings** for Deutsche Bank through Kubernetes orchestration. Specialized in Java 17, Spring Boot 3, and GCP automation via Terraform.
+                </p>
+                <div class="flex gap-3">
+                    <a href="https://github.com/ashutoshdang" class="p-3 bg-zinc-100 rounded-xl hover:bg-dark hover:text-white transition-all"><i data-lucide="github"></i></a>
+                    <a href="https://linkedin.com/in/ashutosh-dang/" class="p-3 bg-zinc-100 rounded-xl hover:bg-blue-600 hover:text-white transition-all"><i data-lucide="linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section id="education" class="space-y-10">
-            <h2 class="text-3xl font-bold tracking-tight border-b pb-4">Education</h2>
-            <div class="grid gap-8">
-                <div class="flex justify-between items-start">
+    <section class="bg-dark py-24 text-white">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
+            <div class="reveal space-y-4">
+                <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center"><i data-lucide="cpu" class="text-primary"></i></div>
+                <h4 class="text-lg font-bold">Event-Driven Architecture</h4>
+                <p class="text-zinc-400 text-sm">RabbitMQ, Eureka, and Zuul implementation for high-resilience microservices.</p>
+            </div>
+            <div class="reveal delay-100 space-y-4">
+                <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center"><i data-lucide="line-chart" class="text-primary"></i></div>
+                <h4 class="text-lg font-bold">Observability Stack</h4>
+                <p class="text-zinc-400 text-sm">ELK (Elasticsearch, Logstash, Kibana) + FluentD for real-time visibility.</p>
+            </div>
+            <div class="reveal delay-200 space-y-4">
+                <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center"><i data-lucide="shield-check" class="text-primary"></i></div>
+                <h4 class="text-lg font-bold">Fiscal Compliance</h4>
+                <p class="text-zinc-400 text-sm">Blockchain-style fiscal signature chaining for tamper-proof tax data (EU standards).</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-32 px-6 max-w-5xl mx-auto space-y-20">
+        <div class="text-center space-y-4 reveal">
+            <h2 class="text-4xl font-black uppercase italic tracking-tighter">Professional Track</h2>
+            <p class="text-zinc-400 font-mono text-sm">Deployment_History_v2.026</p>
+        </div>
+
+        <div class="space-y-16">
+            <div class="grid md:grid-cols-[200px_1fr] gap-8 reveal">
+                <div class="text-sm font-bold font-mono text-zinc-400">OCT 2023 — PRESENT</div>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <h3 class="text-2xl font-bold">Deutsche Bank</h3>
+                        <span class="bg-zinc-100 px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest">Associate SE</span>
+                    </div>
+                    <p class="text-zinc-600 leading-relaxed font-medium">
+                        Led end-to-end modernization of **Position Service** to Java 17. Re-architected monoliths into GKE microservices, cutting infrastructure costs by **50% ($0.5M annually)**. Built IaC with Terraform and automated CI/CD via GitHub Actions.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-[200px_1fr] gap-8 reveal">
+                <div class="text-sm font-bold font-mono text-zinc-400">JUN 2021 — OCT 2023</div>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <h3 class="text-2xl font-bold">Happiest Minds</h3>
+                        <span class="bg-zinc-100 px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest">Senior Developer</span>
+                    </div>
+                    <p class="text-zinc-600 leading-relaxed font-medium">
+                        Delivered fiscalization-compliant POS systems for Manhattan Associates. Engineered digital certificate management improving validation integrity by **70%**.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-[200px_1fr] gap-8 reveal border-l-2 border-primary/20 pl-8 ml-[-2px]">
+                <div class="text-sm font-bold font-mono text-primary">MAY 2018 — JUN 2021</div>
+                <div class="space-y-8">
                     <div>
-                        <h3 class="text-lg font-bold">Biju Patnaik University of Technology</h3>
-                        <p class="text-primary font-medium">BTech in Electronics and Communication Engg</p>
+                        <h3 class="text-2xl font-bold">SDRC Pvt. Ltd.</h3>
+                        <p class="text-zinc-500 font-bold text-sm uppercase">Technical Analyst</p>
                     </div>
-                    <span class="text-sm font-mono">2008 - 2012</span>
-                </div>
-                <div class="flex justify-between items-start">
-                    <div>
-                        <h3 class="text-lg font-bold">Rajendra College</h3>
-                        <p class="text-neutral-500 font-medium">+2 Science</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="p-5 bg-white border border-zinc-100 rounded-2xl shadow-sm">
+                            <h4 class="font-bold text-sm mb-2 text-primary">DDMS (PLAN India)</h4>
+                            <p class="text-xs text-zinc-500">Architected logistics microservices improving last-mile delivery by 30% using PostGIS route optimization.</p>
+                        </div>
+                        <div class="p-5 bg-white border border-zinc-100 rounded-2xl shadow-sm">
+                            <h4 class="font-bold text-sm mb-2 text-primary">SDG Tool (UNDP)</h4>
+                            <p class="text-xs text-zinc-500">Built monitoring platform for 17 Sustainable Goals. Improved transparency through automated visualization pipelines.</p>
+                        </div>
                     </div>
-                    <span class="text-sm font-mono">2006 - 2008</span>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="skills" class="space-y-8">
-            <h2 class="text-3xl font-bold tracking-tight">Skills & Workflow</h2>
-            <div class="flex flex-wrap gap-8 py-4">
-                <i class="devicon-java-plain-wordmark dev-icon"></i>
-                <i class="devicon-spring-plain-wordmark dev-icon"></i>
-                <i class="devicon-angularjs-plain dev-icon"></i>
-                <i class="devicon-react-original dev-icon"></i>
-                <i class="devicon-googlecloud-plain dev-icon"></i>
-                <i class="devicon-terraform-plain-wordmark dev-icon"></i>
-                <i class="devicon-docker-plain-wordmark dev-icon"></i>
-                <i class="devicon-kubernetes-plain dev-icon"></i>
-                <i class="devicon-postgresql-plain dev-icon"></i>
-                <i class="devicon-mongodb-plain dev-icon"></i>
-            </div>
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="p-4 bg-muted rounded-lg space-y-2">
-                    <h4 class="font-bold flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-600"></i> Workflow</h4>
-                    <ul class="text-sm text-neutral-600 space-y-1 list-disc pl-5">
-                        <li>Microservices Architecture</li>
-                        <li>Mobile-First, Responsive Design</li>
-                        <li>Agile Development & Scrum</li>
+    <section id="skills" class="py-24 bg-zinc-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm reveal">
+                    <h5 class="text-xs font-black uppercase text-zinc-400 mb-6 tracking-tighter">Core Backend</h5>
+                    <div class="flex flex-wrap gap-4">
+                        <i class="devicon-java-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
+                        <i class="devicon-spring-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
+                        <i class="devicon-hibernate-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm reveal delay-100">
+                    <h5 class="text-xs font-black uppercase text-zinc-400 mb-6 tracking-tighter">Cloud & DevOps</h5>
+                    <div class="flex flex-wrap gap-4">
+                        <i class="devicon-googlecloud-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
+                        <i class="devicon-terraform-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
+                        <i class="devicon-kubernetes-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
+                        <i class="devicon-docker-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm reveal delay-200">
+                    <h5 class="text-xs font-black uppercase text-zinc-400 mb-6 tracking-tighter">Data & Messaging</h5>
+                    <div class="flex flex-wrap gap-4">
+                        <i class="devicon-postgresql-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
+                        <i class="devicon-mongodb-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
+                        <i class="devicon-mysql-plain-wordmark text-4xl text-zinc-300 hover:text-primary transition-all"></i>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm reveal delay-300">
+                    <h5 class="text-xs font-black uppercase text-zinc-400 mb-6 tracking-tighter">Automation</h5>
+                    <ul class="text-xs font-bold text-zinc-500 space-y-2">
+                        <li>Cucumber / Selenium</li>
+                        <li>JUnit / Mockito</li>
+                        <li>Jasper Reports</li>
                     </ul>
                 </div>
-                <div class="p-4 bg-muted rounded-lg space-y-2">
-                    <h4 class="font-bold flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-orange-500"></i> Recognition</h4>
-                    <p class="text-sm text-neutral-600 italic">Google Certified Developer</p>
-                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="contact" class="bg-neutral-900 text-white p-10 rounded-3xl space-y-8 shadow-2xl">
-            <div class="text-center space-y-2">
-                <h2 class="text-3xl font-bold">Get In Touch</h2>
-                <p class="text-neutral-400">Available for enterprise architecture consulting and leadership roles.</p>
-            </div>
-            <form class="grid gap-4 max-w-lg mx-auto">
-                <div class="grid md:grid-cols-2 gap-4">
-                    <input type="text" placeholder="Name" class="bg-neutral-800 border-none rounded-lg p-3 text-sm focus:ring-2 focus:ring-primary outline-none">
-                    <input type="email" placeholder="Email" class="bg-neutral-800 border-none rounded-lg p-3 text-sm focus:ring-2 focus:ring-primary outline-none">
-                </div>
-                <textarea placeholder="Message" rows="4" class="bg-neutral-800 border-none rounded-lg p-3 text-sm focus:ring-2 focus:ring-primary outline-none"></textarea>
-                <button class="bg-primary hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-all">SEND MESSAGE</button>
-            </form>
-        </section>
+    <footer class="py-24 px-6 text-center space-y-12">
+        <div class="reveal">
+            <h2 class="text-5xl font-black tracking-tighter uppercase italic">Ready to Scale?</h2>
+            <p class="text-zinc-500 max-w-md mx-auto mt-4 font-medium">Currently seeking Associate Software Engineer and Specialist roles in cloud-native development.</p>
+        </div>
+        
+        <div class="flex flex-col items-center gap-4 reveal delay-100">
+            <a href="mailto:techasutos@gmail.com" class="text-2xl font-bold hover:text-primary transition-all">techasutos@gmail.com</a>
+            <div class="text-sm font-mono text-zinc-400 tracking-widest">+91-6370202783</div>
+        </div>
 
-    </main>
-
-    <footer class="py-12 border-t studio-border text-center">
-        <p class="text-xs font-mono text-neutral-400 tracking-widest uppercase">
-            Built with TinyOS Principles © 2026 Ashutosh Dang
-        </p>
+        <div class="pt-12 border-t border-zinc-100 text-[10px] font-bold text-zinc-400 uppercase tracking-[0.3em]">
+            Ashutosh Dang © 2026 | Built for Enterprise Impact
+        </div>
     </footer>
 
     <script>
+        // Lucide Icons
         lucide.createIcons();
+
+        // Reveal on Scroll
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
