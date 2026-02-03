@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinyOS Studio | Kernel-Level UI Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            background-color: #000000; 
+            color: #10b981; 
+            font-family: 'IBM Plex Mono', monospace; 
+        }
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 10;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(16, 185, 129, 0.02) 50%, rgba(0, 0, 0, 0) 100%);
+            opacity: 0.1;
+            position: absolute;
+            bottom: 100%;
+            animation: scanline 6s linear infinite;
+        }
+        @keyframes scanline {
+            0% { bottom: 100%; }
+            100% { bottom: -100%; }
+        }
+        .crusty-border {
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        .terminal-glow {
+            text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <div class="scanline"></div>
+
+    <nav class="p-4 crusty-border bg-black sticky top-0 z-50 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <span class="animate-pulse">[DRV]</span>
+            <span class="font-bold tracking-widest terminal-glow">TINYOS_STUDIO_v1.0.4</span>
+        </div>
+        <div class="hidden md:flex gap-6 text-[10px] uppercase font-bold">
+            <a href="#kernel" class="hover:bg-emerald-500 hover:text-black px-2 transition-all">SYSTEM_CORE</a>
+            <a href="#assets" class="hover:bg-emerald-500 hover:text-black px-2 transition-all">ASSET_MGR</a>
+            <a href="https://ashutoshdang.github.io/kautilya.github.io/index.html" class="bg-emerald-900/30 border border-emerald-500 px-3 py-1 text-emerald-400">EXECUTE_BINARY</a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 pt-20">
+        <section class="mb-20">
+            <div class="mb-4 text-emerald-900 font-bold tracking-widest">>> INITIATING_DESIGN_HANDSHAKE...</div>
+            <h1 class="text-4xl md:text-6xl font-bold leading-none mb-6 uppercase terminal-glow">
+                Visual State Machine <br/> for Embedded Hardware
+            </h1>
+            <p class="max-w-2xl text-emerald-700 text-sm mb-10 leading-relaxed uppercase">
+                TinyOS Studio is a commercial-grade UI orchestrator. Translate high-level visual intent into low-level memory-mapped C structures. Built for the ARM Cortex-M and ESP32 ecosystems.
+            </p>
+            
+            <div class="crusty-border bg-black p-2 rounded shadow-[0_0_30px_rgba(16,185,129,0.1)]">
+                <div class="flex items-center justify-between border-b border-emerald-900/50 p-2 mb-4">
+                    <span class="text-[10px]">active_view: canvas_renderer.exe</span>
+                    <span class="text-[10px] text-emerald-900 uppercase">Status: OK</span>
+                </div>
+                <div class="aspect-video bg-zinc-950 flex flex-col items-center justify-center border border-emerald-900/20">
+                    <div class="text-[10px] text-emerald-800 mb-2">RENDER_BUFFER_01</div>
+                    <div class="w-24 h-24 border-2 border-dashed border-emerald-500/30 flex items-center justify-center animate-spin-slow">
+                        <div class="w-12 h-12 bg-emerald-500/20"></div>
+                    </div>
+                    <div class="mt-4 text-[10px] text-emerald-500 font-bold uppercase tracking-[0.3em]">Hardware Emulation Active</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20 border-t border-emerald-900/30 pt-10">
+            <div>
+                <h3 class="text-xs font-bold bg-emerald-500 text-black inline-block px-2 mb-4 uppercase">Prop_Inspector</h3>
+                <p class="text-xs leading-relaxed text-emerald-700 uppercase">
+                    Manipulate X/Y offsets, scale factor, and 360-degree rotation. The TinyOS Studio Property Inspector updates the shared memory state in real-time, allowing for instant feedback on hardware constraints.
+                </p>
+            </div>
+            <div>
+                <h3 class="text-xs font-bold bg-emerald-500 text-black inline-block px-2 mb-4 uppercase">Firmware_Exporter</h3>
+                <p class="text-xs leading-relaxed text-emerald-700 uppercase">
+                    Zero-overhead C-Header generation. TinyOS Studio converts your visual scenes into static arrays of structs, ready to be flashed to memory-limited systems.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="p-10 border-t border-emerald-900/20 text-center">
+        <div class="text-[9px] text-emerald-900 uppercase tracking-widest">
+            System Origin: ashutoshdang.github.io/TinyOS-Studio <br/>
+            [Compiled: 2026] • [Commercial License: Authorized]
+        </div>
+    </footer>
+</body>
+</html>
