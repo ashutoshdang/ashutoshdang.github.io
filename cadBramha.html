@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAD_BRAMHA | Conversational Studio</title>
+    <title>CAD_BRAMHA | Precision Mechanical Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -19,10 +19,6 @@
                         osAccent: "#00ff9d", 
                         osText: "#a0a0a0",
                         hyperCube: "#3574f0"
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'spin-slow': 'spin 8s linear infinite',
                     }
                 }
             }
@@ -30,44 +26,21 @@
     </script>
     <style>
         body { background-color: #0a0a0a; color: #a0a0a0; }
-        .os-border { border: 1px solid #222; }
         .os-gradient-text { background: linear-gradient(180deg, #fff 0%, #a0a0a0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .os-button { border: 1px solid #00ff9d; color: #00ff9d; transition: all 0.2s; background: rgba(0, 255, 157, 0.05); cursor: pointer; }
+        .os-button { border: 1px solid #00ff9d; color: #00ff9d; transition: all 0.2s; background: rgba(0, 255, 157, 0.05); }
         .os-button:hover { background: #00ff9d; color: #000; box-shadow: 0 0 15px rgba(0, 255, 157, 0.4); }
         .os-card { background: #111; border: 1px solid #222; position: relative; }
         
-        /* Tesseract Wireframe Style */
-        .tesseract-container {
-            perspective: 1000px;
-            width: 100px;
-            height: 100px;
-            position: relative;
-        }
-        .cube-outer {
-            width: 100%; height: 100%;
-            border: 2px solid #00ff9d;
-            position: absolute;
-            animation: spin 6s linear infinite;
-        }
-        .cube-inner {
-            width: 50%; height: 50%;
-            border: 1.5px solid #3574f0;
-            position: absolute;
-            top: 25%; left: 25%;
-            animation: spin 4s linear infinite reverse;
-        }
+        /* Tesseract Animation */
+        .tesseract-box { width: 80px; height: 80px; position: relative; perspective: 1000px; }
+        .t-cube { position: absolute; border: 1px solid #00ff9d; animation: spin 10s linear infinite; }
+        .t-outer { width: 100%; height: 100%; opacity: 0.8; }
+        .t-inner { width: 50%; height: 50%; top: 25%; left: 25%; border-color: #3574f0; animation-direction: reverse; }
 
-        .chat-input {
-            background: rgba(0,0,0,0.5);
-            border: 1px solid #222;
-            color: #00ff9d;
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .chat-input:focus {
-            outline: none;
-            border-color: #00ff9d;
-            box-shadow: 0 0 10px rgba(0, 255, 157, 0.1);
-        }
+        @keyframes spin { from { transform: rotateX(0) rotateY(0); } to { transform: rotateX(360deg) rotateY(360deg); } }
+
+        .chat-input { background: rgba(0,0,0,0.5); border: 1px solid #222; color: #00ff9d; font-family: 'JetBrains Mono', monospace; }
+        .chat-input:focus { outline: none; border-color: #00ff9d; }
     </style>
 </head>
 <body class="font-mono text-[13px]">
@@ -75,13 +48,13 @@
     <nav class="fixed top-0 w-full h-14 bg-osBg border-b border-osBorder z-50 px-6 flex items-center justify-between">
         <div class="flex items-center gap-4">
             <div class="flex flex-col">
-                <span class="text-white font-bold tracking-tighter text-lg leading-none">CAD_BRAMHA <span class="text-osAccent">CONVERSATIONAL</span></span>
-                <span class="text-[9px] text-osText uppercase tracking-[0.2em]">Natural Language Geometry Engine</span>
+                <span class="text-white font-bold tracking-tighter text-lg leading-none">CAD_BRAMHA <span class="text-osAccent">PRECISION</span></span>
+                <span class="text-[9px] text-osText uppercase tracking-[0.2em]">Mechanical Synthesis Kernel</span>
             </div>
         </div>
         <div class="hidden md:flex items-center gap-6">
-            <span class="text-[10px] text-osText">AI_KERNEL_SESSIONS: <span class="text-osAccent">01_ACTIVE</span></span>
-            <button class="os-button px-6 py-2 uppercase text-[11px] font-bold">Launch Studio</button>
+            <span class="text-[10px] text-osText">TOLERANCE: <span class="text-osAccent">±0.001mm</span></span>
+            <button class="os-button px-6 py-2 uppercase text-[11px] font-bold skew-x-[-10deg]"><span class="inline-block skew-x-[10deg]">Export STEP/STL</span></button>
         </div>
     </nav>
 
@@ -89,85 +62,98 @@
         
         <div class="lg:col-span-8 space-y-8">
             <header class="space-y-4">
-                <h1 class="text-4xl md:text-6xl font-medium os-gradient-text tracking-tight">Design via Dialogue.</h1>
+                <div class="inline-block px-3 py-1 border border-osBorder bg-osPanel text-osAccent text-[10px]">
+                    GEOMETRY_KERNEL: ACTIVE | TESSERACT_ENABLED
+                </div>
+                <h1 class="text-4xl md:text-6xl font-medium os-gradient-text tracking-tight">Parametric Mechanical Intelligence.</h1>
                 <p class="text-osText text-lg leading-relaxed max-w-2xl">
-                    Stop clicking, start describing. BRAMHA interprets natural language commands to synthesize complex CAD manifolds, including higher-dimensional projections like the Tesseract.
+                    Generate production-ready hardware through verbal parameters. From standard ISO threads to 4D hypercube projections, BRAMHA translates intent into exact geometry.
                 </p>
             </header>
 
             <div class="os-card border-osAccent/20">
                 <div class="p-3 border-b border-osBorder flex justify-between items-center bg-osPanel/50">
-                    <span class="text-[10px] uppercase font-bold text-osAccent">Live_Synthesis_View</span>
-                    <div class="flex gap-2">
-                        <div class="w-2 h-2 rounded-full bg-red-500/50"></div>
-                        <div class="w-2 h-2 rounded-full bg-yellow-500/50"></div>
-                        <div class="w-2 h-2 rounded-full bg-osAccent"></div>
-                    </div>
+                    <span class="text-[10px] uppercase font-bold text-osAccent">Active_Viewport // Bolt_Synthesis</span>
+                    <span class="text-[9px] text-osText">RENDER: PBR_STUDIO</span>
                 </div>
-                <img src="CAD_BRAMHA.jpg" alt="Conversational CAD UI" class="w-full h-auto">
+                <img src="img/CAD_BRAMHA.jpg" alt="Mechanical CAD Viewport" class="w-full h-auto">
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="os-card p-6 flex items-center gap-6 group">
-                    <div class="tesseract-container shrink-0">
-                        <div class="cube-outer"></div>
-                        <div class="cube-inner"></div>
+                <div class="os-card p-6 flex items-center gap-6">
+                    <div class="tesseract-box shrink-0">
+                        <div class="t-cube t-outer"></div>
+                        <div class="t-cube t-inner"></div>
                     </div>
                     <div>
-                        <h3 class="text-white font-bold uppercase text-xs mb-2">Higher-Dim Geometry</h3>
-                        <p class="text-[11px] text-osText italic leading-snug">"Generate a 4D Tesseract with emerald wireframes and oklch-sync shading."</p>
+                        <h3 class="text-white font-bold uppercase text-xs mb-1">Hyper-Geometry Engine</h3>
+                        <p class="text-[10px] text-osText">Simulating 4D manifold stress on 3D projections. Tesseract kernel synchronized.</p>
                     </div>
                 </div>
-                <div class="os-card p-6 flex flex-col justify-center">
-                    <div class="text-[9px] text-osAccent uppercase mb-2">Kernel_Instruction_Log</div>
-                    <div class="text-[11px] text-white font-mono">
-                        > CALL hypercube.gen(4D)<br>
-                        > APPLY material.emerald_oklch()<br>
-                        > SYNC vault.pos_01
+                <div class="os-card p-6 border-l-2 border-osAccent">
+                    <h3 class="text-white font-bold uppercase text-xs mb-2">Synthesis Metadata</h3>
+                    <div class="grid grid-cols-2 gap-4 text-[10px]">
+                        <div>
+                            <span class="block text-osText italic">Material:</span>
+                            <span class="text-white font-bold uppercase">Steel_Grade_10.9</span>
+                        </div>
+                        <div>
+                            <span class="block text-osText italic">Mass:</span>
+                            <span class="text-white font-bold uppercase">42.45 grams</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <aside class="lg:col-span-4 space-y-6">
-            <div class="os-card h-full flex flex-col min-h-[500px] border-osAccent/10">
-                <div class="p-4 border-b border-osBorder bg-osPanel">
-                    <span class="text-white font-bold text-[11px]">AI_KERNEL_SESSIONS</span>
+            <div class="os-card h-full flex flex-col min-h-[550px] border-osAccent/10">
+                <div class="p-4 border-b border-osBorder bg-osPanel flex justify-between items-center">
+                    <span class="text-white font-bold text-[11px]">NEURAL_COMMAND_TERMINAL</span>
+                    <i data-lucide="cpu" class="w-4 h-4 text-osAccent"></i>
                 </div>
                 
-                <div class="flex-1 p-4 space-y-4 overflow-y-auto font-mono text-[12px] bg-black/40">
+                <div class="flex-1 p-5 space-y-6 overflow-y-auto font-mono text-[12px] bg-black/40">
                     <div class="space-y-1">
                         <span class="text-osAccent">[USER]:</span>
-                        <span class="text-osText">Add a 60x60 frame module with doors from the library.</span>
+                        <span class="text-osText">Generate an M10 threaded bolt, 50mm length with a hexagonal head.</span>
+                    </div>
+                    <div class="space-y-2 border-l border-osBorder pl-3">
+                        <span class="text-blue-400">[BRAMHA]:</span>
+                        <div class="text-osText space-y-1 text-[11px]">
+                            - Initializing ISO Metric Profile...<br>
+                            - Nominal Diameter: 10mm<br>
+                            - Pitch: 1.5mm (Standard)<br>
+                            - Head Style: HEX_DIN_933<br>
+                            - Generating Helix Manifold... [DONE]
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <span class="text-osAccent">[USER]:</span>
+                        <span class="text-osText">Increase thread pitch to 2.0mm and apply a 45-degree chamfer to the end.</span>
                     </div>
                     <div class="space-y-1">
                         <span class="text-blue-400">[BRAMHA]:</span>
-                        <span class="text-osText">Searching Vault... 1 unit found. Synthesizing component at Origin(0,0,0).</span>
+                        <span class="text-osText italic">Recalculating helix pitch... Geometry updated. Vault Sync active.</span>
                     </div>
-                    <div class="space-y-1">
-                        <span class="text-osAccent">[USER]:</span>
-                        <span class="text-osText">Change render mode to Presentation Studio.</span>
+                    
+                    <div class="pt-4 border-t border-osBorder/50">
+                         <span class="text-osText text-[10px] uppercase block mb-2 opacity-50">// Geometry Schematic</span>
+                         
                     </div>
-                    <div class="space-y-1">
-                        <span class="text-blue-400">[BRAMHA]:</span>
-                        <span class="text-osText">Switching to PBR_STUDIO. Adjusting light intensity to 4500k.</span>
-                    </div>
+
                     <div class="animate-pulse flex gap-1 items-center">
                         <span class="w-1.5 h-3 bg-osAccent"></span>
-                        <span class="text-[10px] text-osAccent uppercase">Kernel Listening...</span>
+                        <span class="text-[10px] text-osAccent uppercase tracking-widest">Listening for design intent...</span>
                     </div>
                 </div>
 
                 <div class="p-4 border-t border-osBorder bg-osPanel/50">
                     <div class="relative">
-                        <input type="text" placeholder="Define your design..." class="w-full chat-input p-3 pl-4 pr-10 text-xs">
-                        <button class="absolute right-2 top-2 text-osAccent hover:text-white">
-                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        <input type="text" placeholder="e.g., 'Add a nylon locking nut'..." class="w-full chat-input p-3 pl-4 pr-10 text-xs">
+                        <button class="absolute right-2 top-2 text-osAccent">
+                            <i data-lucide="command" class="w-4 h-4"></i>
                         </button>
-                    </div>
-                    <div class="mt-3 flex justify-between text-[9px] text-osText uppercase">
-                        <span>Tokens: 142/4k</span>
-                        <span>Latency: 14ms</span>
                     </div>
                 </div>
             </div>
@@ -176,16 +162,15 @@
 
     <footer class="fixed bottom-0 w-full h-8 bg-osPanel border-t border-osBorder px-6 flex items-center justify-between text-[10px] text-osText z-50">
         <div class="flex items-center gap-6">
-            <span>MODEL: <span class="text-osAccent">BRAHMA_V.1</span></span>
-            <span class="hidden sm:inline">UPLINK: ACTIVE // OKLCH_SYNC</span>
+            <span>KERNEL: <span class="text-osAccent">BRAMHA_MECH_V1</span></span>
+            <span class="hidden sm:inline">UNIT: METRIC (MM)</span>
+            <span class="hidden sm:inline">UPLINK: ACTIVE</span>
         </div>
-        <div class="flex items-center gap-4">
-            <span class="text-white">© 2026 ASHUTOSH_DANG</span>
+        <div class="flex items-center gap-4 text-white">
+            © 2026 ASHUTOSH_DANG // ENTERPRISE_GRADE
         </div>
     </footer>
 
-    <script>
-        lucide.createIcons();
-    </script>
+    <script>lucide.createIcons();</script>
 </body>
 </html>
