@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MockExam Platform | Portfolio Showcase</title>
+    <meta
+      name="description"
+      content="Standalone portfolio page for MockExam Platform with real authenticated UI screenshots and key feature highlights."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f6f4ed;
+        --ink: #16233f;
+        --card: #ffffff;
+        --line: rgba(22, 35, 63, 0.12);
+        --brand: #e43362;
+        --brand-soft: rgba(228, 51, 98, 0.12);
+        --accent: #2a7de1;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Manrope, sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 12% 5%, #f6dde6 0%, transparent 34%),
+          radial-gradient(circle at 96% 90%, #dce9fb 0%, transparent 32%),
+          var(--bg);
+      }
+
+      .wrap {
+        width: min(1240px, 92vw);
+        margin: 0 auto;
+        padding: 30px 0 58px;
+      }
+
+      .hero {
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        background: #fffefb;
+        padding: 30px;
+        box-shadow: 0 24px 70px rgba(22, 35, 63, 0.11);
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        border: 1px solid rgba(228, 51, 98, 0.28);
+        background: var(--brand-soft);
+        color: #a62f52;
+        padding: 8px 14px;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-weight: 800;
+      }
+
+      h1 {
+        margin: 14px 0 0;
+        font-family: Sora, sans-serif;
+        font-size: clamp(30px, 5vw, 56px);
+        line-height: 1.02;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+      }
+
+      .sub {
+        margin: 14px 0 0;
+        max-width: 820px;
+        font-size: clamp(14px, 1.9vw, 18px);
+        line-height: 1.65;
+        color: rgba(22, 35, 63, 0.74);
+      }
+
+      .actions {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .btn {
+        min-height: 46px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 18px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+      }
+
+      .btn-primary {
+        color: #fff;
+        background: linear-gradient(135deg, #b8224a, var(--brand));
+      }
+
+      .btn-secondary {
+        color: var(--ink);
+        background: #fff;
+        border: 1px solid var(--line);
+      }
+
+      .meta {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .meta-card {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #fff;
+        padding: 11px 12px;
+      }
+
+      .meta-card small {
+        display: block;
+        font-size: 10px;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: rgba(22, 35, 63, 0.5);
+        font-weight: 800;
+      }
+
+      .meta-card strong {
+        display: block;
+        margin-top: 4px;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-family: Sora, sans-serif;
+      }
+
+      .section {
+        margin-top: 18px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: #fff;
+        padding: 22px;
+      }
+
+      .section h2 {
+        margin: 0;
+        font-family: Sora, sans-serif;
+        text-transform: uppercase;
+      }
+
+      .section p.lead {
+        margin: 8px 0 0;
+        color: rgba(22, 35, 63, 0.7);
+      }
+
+      .shots {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .shot {
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: #fff;
+      }
+
+      .shot img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .shot-body {
+        padding: 12px;
+      }
+
+      .shot-body h3 {
+        margin: 0;
+        font-size: 17px;
+        text-transform: uppercase;
+        font-family: Sora, sans-serif;
+      }
+
+      .shot-body p {
+        margin: 8px 0 0;
+        font-size: 14px;
+        line-height: 1.5;
+        color: rgba(22, 35, 63, 0.74);
+      }
+
+      .tags {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .tag {
+        border-radius: 999px;
+        border: 1px solid rgba(228, 51, 98, 0.28);
+        background: var(--brand-soft);
+        color: #a62f52;
+        padding: 5px 10px;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 800;
+      }
+
+      .features {
+        margin-top: 18px;
+        border-radius: 24px;
+        background: #17263f;
+        color: #f4f3ec;
+        padding: 22px;
+      }
+
+      .features h2 {
+        margin: 0;
+        font-family: Sora, sans-serif;
+        text-transform: uppercase;
+      }
+
+      .features ul {
+        margin: 14px 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 10px;
+      }
+
+      .features li {
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.06);
+        padding: 10px 12px;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .features li::before {
+        content: "•";
+        color: #ff8aa9;
+        margin-right: 8px;
+      }
+
+      .note {
+        margin-top: 14px;
+        border: 1px dashed rgba(42, 125, 225, 0.45);
+        border-radius: 12px;
+        background: rgba(42, 125, 225, 0.1);
+        padding: 12px;
+        font-size: 13px;
+      }
+
+      @media (max-width: 980px) {
+        .meta {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .shots {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .hero,
+        .section,
+        .features {
+          padding: 16px;
+          border-radius: 16px;
+        }
+
+        .meta {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="hero">
+        <span class="pill">Personal Project Showcase</span>
+        <h1>MockExam Platform</h1>
+        <p class="sub">
+          Enterprise-grade exam preparation platform for Indian government exams with student and admin workflows,
+          test orchestration, ranking, LMS, and subscription modules.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://ashutoshdang.github.io/" target="_blank" rel="noreferrer">Portfolio Home</a>
+          <a class="btn btn-secondary" href="#screens">View Screens</a>
+        </div>
+        <div class="meta">
+          <div class="meta-card"><small>Frontend</small><strong>React + Vite</strong></div>
+          <div class="meta-card"><small>Backend</small><strong>Spring Boot Microservices</strong></div>
+          <div class="meta-card"><small>Infra</small><strong>Postgres + Redis + Kafka</strong></div>
+          <div class="meta-card"><small>Access</small><strong>Role-based JWT</strong></div>
+        </div>
+      </header>
+
+      <section class="section" id="screens">
+        <h2>Admin Management Screens (Full Set)</h2>
+        <p class="lead">All screenshots are captured from authenticated admin routes at the same fixed viewport size for visual consistency.</p>
+
+        <div class="shots">
+          <article class="shot">
+            <img src="./project-shots/admin-overview.png" alt="Admin overview dashboard screen" />
+            <div class="shot-body">
+              <h3>Overview Dashboard</h3>
+              <p>Central command dashboard with platform KPIs, quick actions, and feature-flag status.</p>
+              <div class="tags"><span class="tag">Admin</span><span class="tag">KPIs</span><span class="tag">Quick Actions</span></div>
+            </div>
+          </article>
+
+          <article class="shot">
+            <img src="./project-shots/admin-exams.png" alt="Admin exams screen" />
+            <div class="shot-body">
+              <h3>Exam Management</h3>
+              <p>Create, review, publish, and manage exam configurations and lifecycle controls.</p>
+              <div class="tags"><span class="tag">Exams</span><span class="tag">Publishing</span><span class="tag">Lifecycle</span></div>
+            </div>
+          </article>
+
+          <article class="shot">
+            <img src="./project-shots/admin-questions.png" alt="Admin questions screen" />
+            <div class="shot-body">
+              <h3>Question Bank</h3>
+              <p>Manage question repository, metadata, and operational content controls for exams.</p>
+              <div class="tags"><span class="tag">Questions</span><span class="tag">Bank</span><span class="tag">Content Ops</span></div>
+            </div>
+          </article>
+
+          <article class="shot">
+            <img src="./project-shots/admin-bulk-upload.png" alt="Admin bulk upload screen" />
+            <div class="shot-body">
+              <h3>Bulk Upload</h3>
+              <p>High-volume import interface for operational data onboarding and migration flows.</p>
+              <div class="tags"><span class="tag">Bulk Ops</span><span class="tag">Import</span><span class="tag">Scale</span></div>
+            </div>
+          </article>
+
+          <article class="shot">
+            <img src="./project-shots/admin-start-exam.png" alt="Post start exam interface screen" />
+            <div class="shot-body">
+              <h3>Post Start Exam Interface</h3>
+              <p>Live attempt workspace right after starting an exam, with timer, section palette, and navigation grid.</p>
+              <div class="tags"><span class="tag">Start Exam</span><span class="tag">Live Attempt</span><span class="tag">Question Nav</span></div>
+            </div>
+          </article>
+
+          <article class="shot">
+            <img src="./project-shots/admin-users.png" alt="Admin users screen" />
+            <div class="shot-body">
+              <h3>User Management</h3>
+              <p>Admin controls for user visibility, access roles, and account-level operations.</p>
+              <div class="tags"><span class="tag">Users</span><span class="tag">Roles</span><span class="tag">Access</span></div>
+            </div>
+          </article>
+
+          <article class="shot">
+            <img src="./project-shots/admin-rankings.png" alt="Admin rankings screen" />
+            <div class="shot-body">
+              <h3>Rankings</h3>
+              <p>Admin ranking controls and leaderboard visibility for competitive performance tracking.</p>
+              <div class="tags"><span class="tag">Rankings</span><span class="tag">Leaderboard</span><span class="tag">Performance</span></div>
+            </div>
+          </article>
+
+          <article class="shot">
+            <img src="./project-shots/admin-payments.png" alt="Admin payments screen" />
+            <div class="shot-body">
+              <h3>Payments</h3>
+              <p>Payment operations dashboard with transaction management and financial oversight.</p>
+              <div class="tags"><span class="tag">Payments</span><span class="tag">Transactions</span><span class="tag">Finance Ops</span></div>
+            </div>
+          </article>
+
+          <article class="shot">
+            <img src="./project-shots/admin-payment-gateway.png" alt="Admin payment gateway screen" />
+            <div class="shot-body">
+              <h3>Payment Gateway</h3>
+              <p>Gateway-level configuration and control panel for payment processing integrations.</p>
+              <div class="tags"><span class="tag">Gateway</span><span class="tag">Configuration</span><span class="tag">Integrations</span></div>
+            </div>
+          </article>
+
+          <article class="shot">
+            <img src="./project-shots/admin-subscriptions.png" alt="Admin subscriptions screen" />
+            <div class="shot-body">
+              <h3>Subscriptions</h3>
+              <p>Plan/package management and subscription lifecycle governance for monetization flows.</p>
+              <div class="tags"><span class="tag">Plans</span><span class="tag">Packages</span><span class="tag">Monetization</span></div>
+            </div>
+          </article>
+
+          <article class="shot">
+            <img src="./project-shots/admin-settings.png" alt="Admin settings overview screen" />
+            <div class="shot-body">
+              <h3>Settings Overview</h3>
+              <p>Top-level administrative settings workspace for platform-wide configuration control.</p>
+              <div class="tags"><span class="tag">Settings</span><span class="tag">Platform</span><span class="tag">Governance</span></div>
+            </div>
+          </article>
+
+          <article class="shot">
+            <img src="./project-shots/admin-settings-auth.png" alt="Admin auth settings screen" />
+            <div class="shot-body">
+              <h3>Auth Settings</h3>
+              <p>Identity and authentication toggles for registration and login experience controls.</p>
+              <div class="tags"><span class="tag">Auth</span><span class="tag">Security</span><span class="tag">Login Controls</span></div>
+            </div>
+          </article>
+
+          <article class="shot">
+            <img src="./project-shots/admin-settings-social.png" alt="Admin social settings screen" />
+            <div class="shot-body">
+              <h3>Social Settings</h3>
+              <p>Social integration settings and platform connectivity controls managed by admin.</p>
+              <div class="tags"><span class="tag">Social</span><span class="tag">Integrations</span><span class="tag">OAuth</span></div>
+            </div>
+          </article>
+
+          <article class="shot">
+            <img src="./project-shots/admin-settings-notifications.png" alt="Admin notification settings screen" />
+            <div class="shot-body">
+              <h3>Notification Settings</h3>
+              <p>Notification policy configuration and channel-level controls for platform messaging.</p>
+              <div class="tags"><span class="tag">Notifications</span><span class="tag">Channels</span><span class="tag">Policies</span></div>
+            </div>
+          </article>
+
+          <article class="shot">
+            <img src="./project-shots/admin-settings-platform.png" alt="Admin platform settings screen" />
+            <div class="shot-body">
+              <h3>Platform Settings</h3>
+              <p>Core runtime and platform behavior configuration for system-wide administration.</p>
+              <div class="tags"><span class="tag">Platform</span><span class="tag">Runtime</span><span class="tag">Feature Control</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="features">
+        <h2>Features List</h2>
+        <ul>
+          <li>Complete admin management coverage: Overview, Exams, Questions, Bulk Upload, Users, Rankings, Payments, Gateway, Subscriptions, and Settings.</li>
+          <li>Dedicated admin settings submodules: Auth, Social, Notifications, and Platform controls.</li>
+          <li>All screenshots captured with equal viewport dimensions for consistent portfolio presentation.</li>
+          <li>Includes post-start exam attempt interface showcasing real exam flow after launch action.</li>
+          <li>Payment and subscription administration flows integrated with exam platform operations.</li>
+          <li>Role-based access architecture for clean separation of learner and management experiences.</li>
+        </ul>
+      </section>
+
+      <p class="note">
+        Deploy note: copy this folder into your GitHub Pages repo and link to /mockexam-platform/index.html from your project card.
+      </p>
+    </main>
+  </body>
+</html>
