@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kautliya Framework | School Management ERP</title>
+    <meta
+      name="description"
+      content="Kautliya Framework is a full-stack school management ERP with modules for dashboard analytics, student registry, attendance, and finance workflows."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f4f2ea;
+        --ink: #162424;
+        --soft: #fefdf8;
+        --line: rgba(22, 36, 36, 0.12);
+        --brand: #1d6b52;
+        --accent: #c76f33;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 15% 5%, #d9efe3 0%, transparent 32%),
+          radial-gradient(circle at 90% 90%, #f2ddce 0%, transparent 35%),
+          var(--bg);
+      }
+
+      .wrapper {
+        width: min(1180px, 92vw);
+        margin: 0 auto;
+        padding: 28px 0 52px;
+      }
+
+      .hero {
+        background: var(--soft);
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        box-shadow: 0 25px 70px rgba(22, 36, 36, 0.1);
+        padding: 30px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        border: 1px solid color-mix(in srgb, var(--brand) 30%, white);
+        background: color-mix(in srgb, var(--brand) 12%, white);
+        color: var(--brand);
+      }
+
+      h1 {
+        font-family: "Sora", sans-serif;
+        margin: 16px 0 0;
+        font-size: clamp(28px, 4.5vw, 56px);
+        line-height: 1.02;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+      }
+
+      .subtitle {
+        margin: 16px 0 0;
+        max-width: 780px;
+        font-size: clamp(14px, 2vw, 18px);
+        line-height: 1.6;
+        color: rgba(22, 36, 36, 0.75);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 22px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        border-radius: 12px;
+        padding: 0 18px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: transform 0.15s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        background: var(--ink);
+        color: #ffffff;
+      }
+
+      .btn-secondary {
+        border: 1px solid var(--line);
+        background: #ffffff;
+        color: var(--ink);
+      }
+
+      .meta {
+        margin-top: 22px;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .meta-card {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: white;
+        padding: 12px;
+      }
+
+      .meta-card .label {
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(22, 36, 36, 0.5);
+        font-weight: 700;
+      }
+
+      .meta-card .value {
+        margin-top: 4px;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 800;
+      }
+
+      .section {
+        margin-top: 20px;
+        background: var(--soft);
+        border-radius: 26px;
+        border: 1px solid var(--line);
+        padding: 24px;
+      }
+
+      .section h2 {
+        margin: 0;
+        font-family: "Sora", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: -0.01em;
+      }
+
+      .grid {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .shot-card {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      .shot-card img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .shot-content {
+        padding: 12px 14px 14px;
+      }
+
+      .shot-content h3 {
+        margin: 0;
+        font-size: 17px;
+        text-transform: uppercase;
+        font-weight: 800;
+      }
+
+      .shot-content p {
+        margin: 8px 0 0;
+        font-size: 14px;
+        color: rgba(22, 36, 36, 0.75);
+        line-height: 1.5;
+      }
+
+      .tag-row {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .tag {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        border: 1px solid color-mix(in srgb, var(--brand) 20%, white);
+        color: var(--brand);
+        background: color-mix(in srgb, var(--brand) 8%, white);
+        border-radius: 999px;
+        padding: 5px 10px;
+      }
+
+      .features {
+        margin-top: 20px;
+        background: var(--ink);
+        color: #f7f4ec;
+        border-radius: 26px;
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .features .title {
+        margin: 0;
+        font-family: "Sora", sans-serif;
+        text-transform: uppercase;
+      }
+
+      .features ul {
+        margin: 14px 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 10px;
+      }
+
+      .features li {
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
+        padding: 10px 12px;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .features li::before {
+        content: "●";
+        color: #9fd9be;
+        margin-right: 8px;
+      }
+
+      .footer-note {
+        margin-top: 18px;
+        padding: 14px;
+        border: 1px dashed color-mix(in srgb, var(--accent) 40%, white);
+        border-radius: 12px;
+        background: color-mix(in srgb, var(--accent) 10%, white);
+        font-size: 13px;
+      }
+
+      @media (max-width: 960px) {
+        .meta {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .hero,
+        .section,
+        .features {
+          padding: 18px;
+          border-radius: 18px;
+        }
+
+        .meta {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrapper">
+      <header class="hero">
+        <span class="pill">Personal Project Showcase</span>
+        <h1>Kautliya Framework<br />School Management ERP</h1>
+        <p class="subtitle">
+          Real screenshots from working management modules. This standalone page is ready to be copied into your GitHub Pages repository
+          under its own folder and linked from your portfolio.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://ashutoshdang.github.io/" target="_blank" rel="noreferrer">Portfolio Home</a>
+          <a class="btn btn-secondary" href="#screens">View Screens</a>
+        </div>
+        <div class="meta">
+          <div class="meta-card">
+            <div class="label">Frontend</div>
+            <div class="value">React + Vite</div>
+          </div>
+          <div class="meta-card">
+            <div class="label">Backend</div>
+            <div class="value">Spring Boot</div>
+          </div>
+          <div class="meta-card">
+            <div class="label">State</div>
+            <div class="value">Zustand</div>
+          </div>
+          <div class="meta-card">
+            <div class="label">Security</div>
+            <div class="value">Role Based</div>
+          </div>
+        </div>
+      </header>
+
+      <section class="section" id="screens">
+        <h2>Actual Management Screens</h2>
+        <div class="grid">
+          <article class="shot-card">
+            <img src="./project-shots/overview.png" alt="Governance Dashboard screen" />
+            <div class="shot-content">
+              <h3>Governance Dashboard</h3>
+              <p>Institution-wide KPI board for admissions, treasury inflow, engagement, and integrity metrics.</p>
+              <div class="tag-row">
+                <span class="tag">Executive Analytics</span>
+                <span class="tag">KPI Cards</span>
+                <span class="tag">Admission Feed</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="shot-card">
+            <img src="./project-shots/students.png" alt="Student Registry screen" />
+            <div class="shot-content">
+              <h3>Student Registry</h3>
+              <p>Master student ledger with search, filtering, record status, and identity actions.</p>
+              <div class="tag-row">
+                <span class="tag">Registry</span>
+                <span class="tag">Identity</span>
+                <span class="tag">Engagement</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="shot-card">
+            <img src="./project-shots/attendance.png" alt="Attendance module screen" />
+            <div class="shot-content">
+              <h3>Attendance Terminal</h3>
+              <p>Daily attendance operations with high-speed marking flow and class/section controls.</p>
+              <div class="tag-row">
+                <span class="tag">Attendance</span>
+                <span class="tag">Terminal</span>
+                <span class="tag">Live Workflow</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="shot-card">
+            <img src="./project-shots/finance.png" alt="Treasury screen" />
+            <div class="shot-content">
+              <h3>Treasury</h3>
+              <p>Fee and finance workspace for collection tracking, outstanding amounts, and ledger actions.</p>
+              <div class="tag-row">
+                <span class="tag">Finance</span>
+                <span class="tag">Collections</span>
+                <span class="tag">Outstanding</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="features" id="features">
+        <h2 class="title">Features List</h2>
+        <ul>
+          <li>Role-based secure access to dashboard, student registry, staff, attendance, finance, and operations modules.</li>
+          <li>Governance dashboard with actionable institutional metrics and operational summaries.</li>
+          <li>Student lifecycle records with filtering, search, and management actions.</li>
+          <li>Attendance terminal and workflow support designed for daily high-volume operations.</li>
+          <li>Treasury module for fee tracking, outstanding management, and finance visibility.</li>
+          <li>Modular architecture with React frontend, Zustand state model, and Spring Boot backend integration.</li>
+        </ul>
+      </section>
+
+      <p class="footer-note">
+        Deploy note: copy this folder as-is into your GitHub Pages repo and link to
+        /kautliya-framework/index.html from your main portfolio projects section.
+      </p>
+    </main>
+  </body>
+</html>
