@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grocery Dukaan POS | Portfolio Showcase</title>
+    <meta
+      name="description"
+      content="Standalone portfolio page for Grocery Dukaan POS with real application screenshots and feature highlights."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Manrope:wght@500;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f2f7f5;
+        --ink: #0f2420;
+        --card: #ffffff;
+        --line: rgba(15, 36, 32, 0.12);
+        --brand: #0f8a63;
+        --brand-dark: #0c5a45;
+        --accent: #d8753c;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: Manrope, sans-serif;
+        background:
+          radial-gradient(circle at 10% 5%, #d7eee7 0%, transparent 30%),
+          radial-gradient(circle at 95% 95%, #f6dfd2 0%, transparent 28%),
+          var(--bg);
+      }
+
+      .wrap {
+        width: min(1220px, 92vw);
+        margin: 0 auto;
+        padding: 30px 0 56px;
+      }
+
+      .hero {
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: #fdfefc;
+        padding: 30px;
+        box-shadow: 0 20px 65px rgba(15, 36, 32, 0.1);
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        border: 1px solid rgba(15, 138, 99, 0.25);
+        background: rgba(15, 138, 99, 0.12);
+        color: var(--brand-dark);
+        padding: 8px 14px;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-weight: 800;
+      }
+
+      h1 {
+        margin: 14px 0 0;
+        font-family: Outfit, sans-serif;
+        font-size: clamp(30px, 5vw, 56px);
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+      }
+
+      .sub {
+        margin: 14px 0 0;
+        max-width: 780px;
+        font-size: clamp(14px, 1.8vw, 18px);
+        line-height: 1.65;
+        color: rgba(15, 36, 32, 0.76);
+      }
+
+      .actions {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .btn {
+        min-height: 46px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 18px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-weight: 800;
+      }
+
+      .btn-primary {
+        color: #fff;
+        background: linear-gradient(130deg, var(--brand-dark), var(--brand));
+      }
+
+      .btn-secondary {
+        color: var(--ink);
+        background: #fff;
+        border: 1px solid var(--line);
+      }
+
+      .meta {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .meta-card {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--card);
+        padding: 11px 12px;
+      }
+
+      .meta-card small {
+        display: block;
+        font-size: 10px;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: rgba(15, 36, 32, 0.5);
+        font-weight: 800;
+      }
+
+      .meta-card strong {
+        display: block;
+        margin-top: 4px;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-family: Outfit, sans-serif;
+      }
+
+      .section {
+        margin-top: 18px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: #fff;
+        padding: 22px;
+      }
+
+      .section h2 {
+        margin: 0;
+        font-family: Outfit, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: -0.01em;
+      }
+
+      .section p.lead {
+        margin: 8px 0 0;
+        color: rgba(15, 36, 32, 0.7);
+      }
+
+      .shots {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .shot {
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: #fff;
+      }
+
+      .shot img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .shot-body {
+        padding: 12px;
+      }
+
+      .shot-body h3 {
+        margin: 0;
+        font-size: 17px;
+        text-transform: uppercase;
+        font-family: Outfit, sans-serif;
+      }
+
+      .shot-body p {
+        margin: 8px 0 0;
+        font-size: 14px;
+        line-height: 1.5;
+        color: rgba(15, 36, 32, 0.74);
+      }
+
+      .tags {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .tag {
+        border-radius: 999px;
+        border: 1px solid rgba(15, 138, 99, 0.2);
+        background: rgba(15, 138, 99, 0.1);
+        color: var(--brand-dark);
+        padding: 5px 10px;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 800;
+      }
+
+      .features {
+        margin-top: 18px;
+        border-radius: 24px;
+        background: #102a24;
+        color: #f5f2eb;
+        padding: 22px;
+      }
+
+      .features h2 {
+        margin: 0;
+        font-family: Outfit, sans-serif;
+        text-transform: uppercase;
+      }
+
+      .features ul {
+        margin: 14px 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 10px;
+      }
+
+      .features li {
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 10px 12px;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .features li::before {
+        content: "•";
+        color: #9ee3c7;
+        margin-right: 8px;
+      }
+
+      .note {
+        margin-top: 14px;
+        border: 1px dashed rgba(216, 117, 60, 0.45);
+        border-radius: 12px;
+        background: rgba(216, 117, 60, 0.08);
+        padding: 12px;
+        font-size: 13px;
+      }
+
+      @media (max-width: 980px) {
+        .meta {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .shots {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .hero,
+        .section,
+        .features {
+          padding: 16px;
+          border-radius: 16px;
+        }
+
+        .meta {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="hero">
+        <span class="pill">Personal Project Showcase</span>
+        <h1>Grocery Dukaan POS</h1>
+        <p class="sub">
+          Full-stack grocery inventory and billing platform with role-based workflows for POS, product operations,
+          stock control, invoices, and reporting.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://ashutoshdang.github.io/" target="_blank" rel="noreferrer">Portfolio Home</a>
+          <a class="btn btn-secondary" href="#screens">View Screens</a>
+        </div>
+        <div class="meta">
+          <div class="meta-card"><small>Frontend</small><strong>React + Vite</strong></div>
+          <div class="meta-card"><small>Backend</small><strong>Spring Boot</strong></div>
+          <div class="meta-card"><small>Database</small><strong>PostgreSQL/H2</strong></div>
+          <div class="meta-card"><small>Auth</small><strong>JWT + Roles</strong></div>
+        </div>
+      </header>
+
+      <section class="section" id="screens">
+        <h2>Actual Module Screens</h2>
+        <p class="lead">Screens captured from the running app interface.</p>
+
+        <div class="shots">
+          <article class="shot">
+            <img src="./project-shots/dashboard.png" alt="Dashboard screen" />
+            <div class="shot-body">
+              <h3>Dashboard</h3>
+              <p>Overview hub with navigation, global search, and operational status panels.</p>
+              <div class="tags"><span class="tag">Admin Shell</span><span class="tag">Navigation</span><span class="tag">Alerts</span></div>
+            </div>
+          </article>
+
+          <article class="shot">
+            <img src="./project-shots/pos.png" alt="POS Billing screen" />
+            <div class="shot-body">
+              <h3>POS / Billing</h3>
+              <p>Checkout interface for product search, current bill, and customer billing flow.</p>
+              <div class="tags"><span class="tag">POS</span><span class="tag">Billing</span><span class="tag">Cart Flow</span></div>
+            </div>
+          </article>
+
+          <article class="shot">
+            <img src="./project-shots/inventory.png" alt="Inventory screen" />
+            <div class="shot-body">
+              <h3>Inventory</h3>
+              <p>Stock and item management workspace with monitoring and operational controls.</p>
+              <div class="tags"><span class="tag">Stock</span><span class="tag">Product Ops</span><span class="tag">Controls</span></div>
+            </div>
+          </article>
+
+          <article class="shot">
+            <img src="./project-shots/reports.png" alt="Reports screen" />
+            <div class="shot-body">
+              <h3>Reports</h3>
+              <p>Reporting area for sales trends and performance-driven business visibility.</p>
+              <div class="tags"><span class="tag">Analytics</span><span class="tag">Sales</span><span class="tag">Insights</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="features">
+        <h2>Features List</h2>
+        <ul>
+          <li>POS billing with multi-payment support and cart-driven checkout workflow.</li>
+          <li>Inventory management with stock tracking and operational product handling.</li>
+          <li>Invoices, ledger, and customer-oriented sales records.</li>
+          <li>Suppliers, expenses, returns, and GST slab modules for retail operations.</li>
+          <li>Reports and dashboard-level visibility for business monitoring.</li>
+          <li>Role-based authentication with protected admin/shopkeeper routes.</li>
+        </ul>
+      </section>
+
+      <p class="note">
+        Deploy note: copy this folder into your GitHub Pages repo and link to /grocery-dukaan-pos/index.html from your project card.
+      </p>
+    </main>
+  </body>
+</html>
